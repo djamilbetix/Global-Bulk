@@ -60,8 +60,7 @@
             settings_title: 'Settings', settings_notifications: 'Notifications', settings_enabled: 'Enabled',
             settings_language: 'Language', settings_theme: 'Theme', settings_light: 'Light', settings_language_intro: 'Choose your preferred language',
             whitepaper_title: 'Whitepaper', whitepaper_intro: 'Discover Global Bulk as a true international B2B shopping center: organization, operations, services and perspectives.',
-            whitepaper_open: 'Open', whitepaper_official: 'Official document', whitepaper_subtitle: 'The global B2B shopping center, explained',
-            whitepaper_meta: 'Edition 2026 — 12 chapters — reading ~18 min',
+            whitepaper_read: 'Read the whitepaper',
             toast_welcome: 'Welcome', toast_connect_info: 'Go to Profile to connect', toast_open_pi: 'Open in Pi Browser for Pi',
             toast_photo_deleted: 'Photo deleted', toast_max_images: 'Maximum 4 images', toast_product_added: 'added to cart',
             toast_connecting: 'Opening Pi Network...', toast_connection_cancelled: 'Connection cancelled', toast_error: 'Error',
@@ -125,8 +124,7 @@
             settings_title: 'Paramètres', settings_notifications: 'Notifications', settings_enabled: 'Activées',
             settings_language: 'Langue', settings_theme: 'Thème', settings_light: 'Clair', settings_language_intro: 'Choisissez votre langue préférée',
             whitepaper_title: 'Livre blanc', whitepaper_intro: 'Découvrez Global Bulk comme un véritable centre commercial B2B international : organisation, fonctionnement, services et perspectives.',
-            whitepaper_open: 'Ouvrir', whitepaper_official: 'Document officiel', whitepaper_subtitle: 'Le centre commercial B2B mondial, expliqué',
-            whitepaper_meta: 'Édition 2026 — 12 chapitres — lecture ~18 min',
+            whitepaper_read: 'Lire le livre blanc',
             toast_welcome: 'Bienvenue', toast_connect_info: 'Allez dans Profil pour vous connecter', toast_open_pi: 'Ouvrez dans Pi Browser pour Pi',
             toast_photo_deleted: 'Photo supprimée', toast_max_images: 'Maximum 4 images', toast_product_added: 'ajouté au panier',
             toast_connecting: 'Ouverture de Pi Network...', toast_connection_cancelled: 'Connexion annulée', toast_error: 'Erreur',
@@ -535,7 +533,7 @@
     function hideMainContent() { document.getElementById('mainContent').style.display = 'none'; }
 
     // ==========================================
-    // NOUVEAU DESIGN : FICHE PRODUIT
+    // DESIGN FICHE PRODUIT
     // ==========================================
     window.showProductDetail = function(id) {
         var p = products.find(function(x) { return String(x.id) === String(id); });
@@ -843,17 +841,12 @@
             case 'historique': return renderHistorique();
             case 'parametres': return renderSettings();
             case 'langues': return renderSettings();
-            // NOUVEAU DESIGN : WHITEPAPER
+            // LIVRE BLANC : Simple comme un livre
             case 'livre-blanc':
-                return '<h3><i class="fas fa-file-pdf"></i> ' + t('whitepaper_title') + '</h3>' +
-                    '<p style="color:var(--text-muted);font-size:13.5px;margin-bottom:18px;line-height:1.5;">' + t('whitepaper_intro') + '</p>' +
-                    '<a href="whitepaper.html" class="doc-download-card">' +
-                        '<div class="doc-download-icon"><i class="fas fa-file-pdf"></i></div>' +
-                        '<div class="doc-download-info">' +
-                            '<span class="doc-download-title">' + t('whitepaper_title') + ' 2026</span>' +
-                            '<span class="doc-download-meta">' + t('whitepaper_meta') + '</span>' +
-                        '</div>' +
-                        '<i class="fas fa-chevron-right doc-download-arrow"></i>' +
+                return '<h3><i class="fas fa-book"></i> ' + t('whitepaper_title') + '</h3>' +
+                    '<p style="color:var(--text-muted);font-size:14px;margin-bottom:20px;line-height:1.6;">' + t('whitepaper_intro') + '</p>' +
+                    '<a href="whitepaper.html" class="btn btn-primary btn-block" style="padding: 16px; font-size: 16px;">' +
+                        '<i class="fas fa-book-open"></i> ' + t('whitepaper_read') +
                     '</a>';
             default: return '<p>—</p>';
         }
