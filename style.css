@@ -264,7 +264,7 @@ ul { list-style:none; }
 .stats-grid .stat-item .number { display:block; font-size:26px; font-weight:800; color:var(--primary); }
 .stats-grid .stat-item .label { font-size:12px; color:var(--text-muted); }
 
-/* ===== NOUVEAU DESIGN : FICHE PRODUIT ===== */
+/* ===== DESIGN FICHE PRODUIT (CORRIGÉ MOBILE) ===== */
 .product-detail-card { padding:0; margin: 0 16px 16px; overflow:hidden; background:var(--white); border-radius:var(--radius); box-shadow:var(--shadow-lg); }
 .product-detail-grid { display:flex; flex-direction:column; }
 @media(min-width:768px){ .product-detail-grid { flex-direction:row; } }
@@ -272,7 +272,7 @@ ul { list-style:none; }
 .product-detail-grid .gallery { background: #f9f9f9; width:100%; }
 @media(min-width:768px){ .product-detail-grid .gallery { width:50%; border-right:1px solid #e9ecf0; } }
 
-.product-detail-grid .main-image { height: 350px; display: flex; align-items: center; justify-content: center; }
+.product-detail-grid .main-image { height: 300px; display: flex; align-items: center; justify-content: center; }
 .product-detail-grid .main-image img { width: 100%; height: 100%; object-fit: cover; }
 
 .product-detail-grid .gallery .thumb-strip { display: flex; gap: 8px; padding: 10px; overflow-x: auto; background: #fff; border-top: 1px solid #e9ecf0; scrollbar-width: thin; }
@@ -281,27 +281,28 @@ ul { list-style:none; }
 .product-detail-grid .gallery .thumb-strip .gallery-img { width: 60px; height: 60px; border-radius: 8px; object-fit: cover; cursor: pointer; flex-shrink: 0; border: 2px solid transparent; transition: var(--transition); }
 .product-detail-grid .gallery .thumb-strip .gallery-img.active { border-color: var(--primary); transform: scale(1.05); }
 
-.product-detail-grid .info { padding: 24px; flex:1; display:flex; flex-direction:column; }
-.product-detail-grid .info h1 { font-size: 24px; font-weight: 800; margin-bottom: 8px; line-height:1.2; }
-.product-detail-grid .info .supplier-info { font-size: 13.5px; color: var(--text-muted); margin-bottom: 20px; display:flex; align-items:center; gap:6px; }
+.product-detail-grid .info { padding: 20px; flex:1; display:flex; flex-direction:column; }
+.product-detail-grid .info h1 { font-size: 22px; font-weight: 800; margin-bottom: 8px; line-height:1.2; }
+.product-detail-grid .info .supplier-info { font-size: 13.5px; color: var(--text-muted); margin-bottom: 16px; display:flex; align-items:center; gap:6px; }
 
-.price-box { display:flex; gap:12px; background: #F8FAFC; border: 1px solid #E2E8F0; padding: 16px; border-radius: 12px; margin-bottom: 20px; }
+.price-box { display:flex; flex-direction:row; gap:12px; background: #F8FAFC; border: 1px solid #E2E8F0; padding: 14px; border-radius: 12px; margin-bottom: 16px; }
 .price-box > div { flex:1; display:flex; flex-direction:column; }
-.price-box .price-label { font-size: 12px; font-weight: 600; color: var(--text-muted); text-transform: uppercase; margin-bottom: 4px; }
-.price-box .price-value { font-size: 26px; font-weight: 800; color: var(--primary); line-height:1; }
-.price-box .price-value small { font-size: 14px; font-weight: 600; color: var(--text-muted); }
-.price-box .min-value { font-size: 20px; font-weight: 700; color: var(--text-dark); line-height:1; }
-.price-box .min-value small { font-size: 13px; font-weight: 500; color: var(--text-muted); }
+.price-box .price-label { font-size: 11px; font-weight: 700; color: var(--text-muted); text-transform: uppercase; margin-bottom: 4px; letter-spacing: 0.5px; }
+.price-box .price-value { font-size: 22px; font-weight: 800; color: var(--primary); line-height:1; }
+.price-box .price-value small { font-size: 12px; font-weight: 600; color: var(--text-muted); }
+.price-box .min-value { font-size: 18px; font-weight: 700; color: var(--text-dark); line-height:1; }
+.price-box .min-value small { font-size: 12px; font-weight: 500; color: var(--text-muted); }
 
-.volume-pricing-section { margin-bottom: 24px; }
-.volume-title { font-size: 13px; font-weight: 700; text-transform: uppercase; color: var(--text-muted); margin-bottom: 10px; letter-spacing: 0.5px; }
-.volume-pricing { display:grid; grid-template-columns:repeat(3, 1fr); gap:10px; }
-.volume-pricing .tier { background: #fff; border: 1.5px solid #E2E8F0; padding: 12px 8px; border-radius: 10px; text-align: center; transition: var(--transition); display:flex; flex-direction:column; gap:4px; }
+.volume-pricing-section { margin-bottom: 20px; }
+.volume-title { font-size: 12px; font-weight: 700; text-transform: uppercase; color: var(--text-muted); margin-bottom: 10px; letter-spacing: 0.5px; }
+.volume-pricing { display:grid; grid-template-columns:repeat(3, 1fr); gap:8px; }
+.volume-pricing .tier { background: #fff; border: 1.5px solid #E2E8F0; padding: 10px 6px; border-radius: 10px; text-align: center; transition: var(--transition); display:flex; flex-direction:column; gap:4px; }
 .volume-pricing .tier:hover { border-color: var(--secondary); background:#FFFDF5; }
-.volume-pricing .tier-qty { font-size: 11px; font-weight: 700; color: var(--text-muted); background:var(--gray-light); display:inline-block; padding:2px 8px; border-radius:20px; align-self:center; }
-.volume-pricing .tier-price { font-size: 15px; font-weight: 800; color: var(--primary); }
+.volume-pricing .tier-qty { font-size: 10px; font-weight: 700; color: var(--text-muted); background:var(--gray-light); display:inline-block; padding:2px 6px; border-radius:20px; align-self:center; }
+.volume-pricing .tier-price { font-size: 14px; font-weight: 800; color: var(--primary); }
 
-.product-actions { margin-top: auto; padding-top: 16px; }
+.product-actions { margin-top: auto; padding-top: 12px; }
+.product-actions .btn { width: 100%; } /* Force full width sur mobile */
 
 /* ===== FORMULAIRE PUBLICATION ===== */
 .publish-card-social { max-width: 100%; background: var(--white); border-radius: var(--radius); box-shadow: var(--shadow-lg); padding: 20px; margin: 20px 16px; }
@@ -447,13 +448,11 @@ ul { list-style:none; }
 @media (max-width:767px) {
     .product-grid { grid-template-columns: 1fr; gap: 16px; }
     .card-product .image { height: 260px; }
-    .product-detail-grid .main-image { height: 300px; }
+    .product-detail-grid .main-image { height: 260px; }
     .cart-panel { width: 100%; max-width: 100%; }
     .supplier-grid { grid-template-columns: 1fr; }
     .stats-grid { grid-template-columns: 1fr 1fr; }
     .footer-grid { grid-template-columns: 1fr; }
-    .price-box { flex-direction: column; gap: 16px; }
-    .volume-pricing { grid-template-columns: 1fr; }
 }
 @media (max-width:480px) {
     .header { height: 64px; }
@@ -483,65 +482,6 @@ ul { list-style:none; }
 body.drawer-open .header,
 body.drawer-open .bottom-nav {
     visibility: hidden;
-}
-
-/* =====================================================================
-   ===== NOUVEAU DESIGN : Téléchargement du Whitepaper ================
-   ===================================================================== */
-.doc-download-card {
-    display: flex;
-    align-items: center;
-    gap: 16px;
-    background: linear-gradient(135deg, #FFFFFF, #F8FAFC);
-    border: 2px solid #E2E8F0;
-    border-radius: 16px;
-    padding: 16px;
-    text-decoration: none;
-    transition: all 0.3s ease;
-    box-shadow: 0 4px 12px rgba(11,42,91,0.03);
-    margin-bottom: 20px;
-}
-.doc-download-card:hover {
-    border-color: var(--primary);
-    box-shadow: 0 8px 24px rgba(11,42,91,0.08);
-    transform: translateY(-2px);
-}
-.doc-download-icon {
-    width: 52px;
-    height: 52px;
-    border-radius: 12px;
-    background: #FEE2E2;
-    color: #DC2626;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    font-size: 24px;
-    flex-shrink: 0;
-}
-.doc-download-info {
-    flex: 1;
-    display: flex;
-    flex-direction: column;
-    gap: 4px;
-}
-.doc-download-title {
-    font-size: 16px;
-    font-weight: 700;
-    color: var(--primary);
-}
-.doc-download-meta {
-    font-size: 12px;
-    color: var(--text-muted);
-    font-weight: 500;
-}
-.doc-download-arrow {
-    color: var(--text-muted);
-    font-size: 14px;
-    transition: transform 0.3s ease;
-}
-.doc-download-card:hover .doc-download-arrow {
-    transform: translateX(4px);
-    color: var(--primary);
 }
 
 /* =====================================================================
@@ -705,6 +645,65 @@ body.drawer-open .bottom-nav {
 .lang-btn.active { background: linear-gradient(135deg, var(--primary), var(--primary-dark)); color: #fff; border-color: var(--primary); box-shadow: 0 4px 14px rgba(11,42,91,0.25); }
 .lang-btn.active .lang-flag { transform: scale(1.15); }
 .lang-flag { font-size: 18px; transition: transform 0.2s ease; line-height: 1; }
+
+/* =====================================================================
+   ===== NOUVEAU DESIGN : Téléchargement du Whitepaper ================
+   ===================================================================== */
+.doc-download-card {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+    background: linear-gradient(135deg, #FFFFFF, #F8FAFC);
+    border: 2px solid #E2E8F0;
+    border-radius: 16px;
+    padding: 16px;
+    text-decoration: none;
+    transition: all 0.3s ease;
+    box-shadow: 0 4px 12px rgba(11,42,91,0.03);
+    margin-bottom: 20px;
+}
+.doc-download-card:hover {
+    border-color: var(--primary);
+    box-shadow: 0 8px 24px rgba(11,42,91,0.08);
+    transform: translateY(-2px);
+}
+.doc-download-icon {
+    width: 52px;
+    height: 52px;
+    border-radius: 12px;
+    background: #FEE2E2;
+    color: #DC2626;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 24px;
+    flex-shrink: 0;
+}
+.doc-download-info {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+}
+.doc-download-title {
+    font-size: 16px;
+    font-weight: 700;
+    color: var(--primary);
+}
+.doc-download-meta {
+    font-size: 12px;
+    color: var(--text-muted);
+    font-weight: 500;
+}
+.doc-download-arrow {
+    color: var(--text-muted);
+    font-size: 14px;
+    transition: transform 0.3s ease;
+}
+.doc-download-card:hover .doc-download-arrow {
+    transform: translateX(4px);
+    color: var(--primary);
+}
 
 /* =====================================================================
    ===== Pages autonomes (whitepaper.html / faq.html) =================
