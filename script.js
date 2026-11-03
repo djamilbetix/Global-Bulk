@@ -533,7 +533,7 @@
     function hideMainContent() { document.getElementById('mainContent').style.display = 'none'; }
 
     // ==========================================
-    // DESIGN FICHE PRODUIT
+    // DESIGN FICHE PRODUIT (MOBILE OPTIMISÉ)
     // ==========================================
     window.showProductDetail = function(id) {
         var p = products.find(function(x) { return String(x.id) === String(id); });
@@ -574,15 +574,15 @@
 
                     '<div class="volume-pricing-section">' +
                         '<h4 class="volume-title">Volume pricing</h4>' +
-                        '<div class="volume-pricing">' +
-                            '<div class="tier"><span class="tier-qty">' + p.minOrder + '+</span><span class="tier-price">' + formatPrice(p.price) + ' Pi</span></div>' +
-                            '<div class="tier"><span class="tier-qty">' + (p.minOrder * 5) + '+</span><span class="tier-price">' + formatPrice(p.price * 0.9) + ' Pi</span></div>' +
-                            '<div class="tier"><span class="tier-qty">' + (p.minOrder * 10) + '+</span><span class="tier-price">' + formatPrice(p.price * 0.8) + ' Pi</span></div>' +
+                        '<div class="volume-list">' +
+                            '<div class="volume-item"><span class="qty">' + p.minOrder + '+ units</span><span class="price">' + formatPrice(p.price) + ' Pi</span></div>' +
+                            '<div class="volume-item"><span class="qty">' + (p.minOrder * 5) + '+ units</span><span class="price">' + formatPrice(p.price * 0.9) + ' Pi</span></div>' +
+                            '<div class="volume-item"><span class="qty">' + (p.minOrder * 10) + '+ units</span><span class="price">' + formatPrice(p.price * 0.8) + ' Pi</span></div>' +
                         '</div>' +
                     '</div>' +
 
                     '<div class="product-actions">' +
-                        '<button class="btn btn-primary" onclick="addToCart(\'' + p.id + '\')"><i class="fas fa-cart-plus"></i> ' + t('product_add_to_cart') + '</button>' +
+                        '<button class="btn btn-primary btn-block" onclick="addToCart(\'' + p.id + '\')"><i class="fas fa-cart-plus"></i> ' + t('product_add_to_cart') + '</button>' +
                     '</div>' +
                 '</div>' +
             '</div>';
