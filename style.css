@@ -264,7 +264,7 @@ ul { list-style:none; }
 .stats-grid .stat-item .number { display:block; font-size:26px; font-weight:800; color:var(--primary); }
 .stats-grid .stat-item .label { font-size:12px; color:var(--text-muted); }
 
-/* ===== DESIGN FICHE PRODUIT (CORRIGÉ MOBILE) ===== */
+/* ===== DESIGN FICHE PRODUIT (MOBILE OPTIMISÉ) ===== */
 .product-detail-card { padding:0; margin: 0 16px 16px; overflow:hidden; background:var(--white); border-radius:var(--radius); box-shadow:var(--shadow-lg); }
 .product-detail-grid { display:flex; flex-direction:column; }
 @media(min-width:768px){ .product-detail-grid { flex-direction:row; } }
@@ -272,7 +272,7 @@ ul { list-style:none; }
 .product-detail-grid .gallery { background: #f9f9f9; width:100%; }
 @media(min-width:768px){ .product-detail-grid .gallery { width:50%; border-right:1px solid #e9ecf0; } }
 
-.product-detail-grid .main-image { height: 300px; display: flex; align-items: center; justify-content: center; }
+.product-detail-grid .main-image { height: 260px; display: flex; align-items: center; justify-content: center; }
 .product-detail-grid .main-image img { width: 100%; height: 100%; object-fit: cover; }
 
 .product-detail-grid .gallery .thumb-strip { display: flex; gap: 8px; padding: 10px; overflow-x: auto; background: #fff; border-top: 1px solid #e9ecf0; scrollbar-width: thin; }
@@ -282,10 +282,10 @@ ul { list-style:none; }
 .product-detail-grid .gallery .thumb-strip .gallery-img.active { border-color: var(--primary); transform: scale(1.05); }
 
 .product-detail-grid .info { padding: 20px; flex:1; display:flex; flex-direction:column; }
-.product-detail-grid .info h1 { font-size: 22px; font-weight: 800; margin-bottom: 8px; line-height:1.2; }
-.product-detail-grid .info .supplier-info { font-size: 13.5px; color: var(--text-muted); margin-bottom: 16px; display:flex; align-items:center; gap:6px; }
+.product-detail-grid .info h1 { font-size: 20px; font-weight: 800; margin-bottom: 8px; line-height:1.2; }
+.product-detail-grid .info .supplier-info { font-size: 13px; color: var(--text-muted); margin-bottom: 16px; display:flex; align-items:center; gap:6px; }
 
-.price-box { display:flex; flex-direction:row; gap:12px; background: #F8FAFC; border: 1px solid #E2E8F0; padding: 14px; border-radius: 12px; margin-bottom: 16px; }
+.price-box { display:flex; flex-direction:row; gap:12px; background: #F8FAFC; border: 1px solid #E2E8F0; padding: 12px 14px; border-radius: 12px; margin-bottom: 16px; }
 .price-box > div { flex:1; display:flex; flex-direction:column; }
 .price-box .price-label { font-size: 11px; font-weight: 700; color: var(--text-muted); text-transform: uppercase; margin-bottom: 4px; letter-spacing: 0.5px; }
 .price-box .price-value { font-size: 22px; font-weight: 800; color: var(--primary); line-height:1; }
@@ -293,16 +293,14 @@ ul { list-style:none; }
 .price-box .min-value { font-size: 18px; font-weight: 700; color: var(--text-dark); line-height:1; }
 .price-box .min-value small { font-size: 12px; font-weight: 500; color: var(--text-muted); }
 
-.volume-pricing-section { margin-bottom: 20px; }
-.volume-title { font-size: 12px; font-weight: 700; text-transform: uppercase; color: var(--text-muted); margin-bottom: 10px; letter-spacing: 0.5px; }
-.volume-pricing { display:grid; grid-template-columns:repeat(3, 1fr); gap:8px; }
-.volume-pricing .tier { background: #fff; border: 1.5px solid #E2E8F0; padding: 10px 6px; border-radius: 10px; text-align: center; transition: var(--transition); display:flex; flex-direction:column; gap:4px; }
-.volume-pricing .tier:hover { border-color: var(--secondary); background:#FFFDF5; }
-.volume-pricing .tier-qty { font-size: 10px; font-weight: 700; color: var(--text-muted); background:var(--gray-light); display:inline-block; padding:2px 6px; border-radius:20px; align-self:center; }
-.volume-pricing .tier-price { font-size: 14px; font-weight: 800; color: var(--primary); }
+.volume-pricing-section { margin-bottom: 16px; }
+.volume-title { font-size: 12px; font-weight: 700; text-transform: uppercase; color: var(--text-muted); margin-bottom: 8px; letter-spacing: 0.5px; }
+.volume-list { display: flex; flex-direction: column; gap: 8px; }
+.volume-item { display: flex; justify-content: space-between; align-items: center; background: #fff; border: 1px solid #E2E8F0; padding: 10px 14px; border-radius: 10px; font-size: 14px; }
+.volume-item .qty { color: var(--text-muted); font-weight: 600; }
+.volume-item .price { color: var(--primary); font-weight: 800; }
 
-.product-actions { margin-top: auto; padding-top: 12px; }
-.product-actions .btn { width: 100%; } /* Force full width sur mobile */
+.product-actions { margin-top: auto; padding-top: 8px; }
 
 /* ===== FORMULAIRE PUBLICATION ===== */
 .publish-card-social { max-width: 100%; background: var(--white); border-radius: var(--radius); box-shadow: var(--shadow-lg); padding: 20px; margin: 20px 16px; }
@@ -448,7 +446,6 @@ ul { list-style:none; }
 @media (max-width:767px) {
     .product-grid { grid-template-columns: 1fr; gap: 16px; }
     .card-product .image { height: 260px; }
-    .product-detail-grid .main-image { height: 260px; }
     .cart-panel { width: 100%; max-width: 100%; }
     .supplier-grid { grid-template-columns: 1fr; }
     .stats-grid { grid-template-columns: 1fr 1fr; }
@@ -746,19 +743,220 @@ body.standalone-page .footer { margin-top: 40px; }
 .cta-box .btn-outline:hover { background: var(--white); color: var(--primary); }
 
 /* =====================================================================
+   ===== NOUVEAU : Design "Livre" pour le Whitepaper ==================
+   ===================================================================== */
+body.book-page {
+    background: #E2E8F0;
+    padding: 30px 15px;
+    font-family: 'Inter', sans-serif;
+}
+
+.book-container {
+    max-width: 800px;
+    margin: 0 auto;
+    background: #FFFFFF;
+    box-shadow: 0 10px 40px rgba(0,0,0,0.1);
+    border-radius: 4px; /* Un livre a des coins légèrement arrondis ou droits */
+    overflow: hidden;
+}
+
+.book-cover {
+    text-align: center;
+    padding: 80px 40px;
+    background: linear-gradient(135deg, var(--primary), var(--primary-dark));
+    color: white;
+    position: relative;
+}
+.book-cover .logo {
+    width: 70px; height: 70px;
+    object-fit: contain;
+    border-radius: 12px;
+    margin-bottom: 30px;
+    background: white;
+    padding: 8px;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.2);
+}
+.book-cover h1 {
+    font-size: 36px;
+    font-weight: 800;
+    line-height: 1.2;
+    margin-bottom: 15px;
+    letter-spacing: -0.5px;
+}
+.book-cover .subtitle {
+    font-size: 16px;
+    color: rgba(255,255,255,0.8);
+    max-width: 500px;
+    margin: 0 auto 30px;
+    line-height: 1.6;
+}
+.book-cover .meta {
+    font-size: 13px;
+    color: rgba(255,255,255,0.6);
+    display: flex;
+    justify-content: center;
+    gap: 20px;
+    border-top: 1px solid rgba(255,255,255,0.15);
+    padding-top: 20px;
+    max-width: 400px;
+    margin: 0 auto;
+}
+.book-cover .meta span { display: flex; align-items: center; gap: 6px; }
+
+.book-body {
+    padding: 60px;
+}
+@media(max-width: 600px) {
+    .book-body { padding: 30px 20px; }
+    .book-cover { padding: 50px 20px; }
+    .book-cover h1 { font-size: 28px; }
+}
+
+/* Table des matières style livre */
+.book-toc {
+    margin-bottom: 50px;
+    padding-bottom: 30px;
+    border-bottom: 1px solid #E2E8F0;
+}
+.book-toc h2 {
+    font-size: 20px;
+    font-weight: 700;
+    color: var(--primary);
+    margin-bottom: 20px;
+    font-family: 'Inter', sans-serif;
+}
+.book-toc ol {
+    list-style: none;
+    padding: 0;
+}
+.book-toc li {
+    display: flex;
+    justify-content: space-between;
+    padding: 8px 0;
+    border-bottom: 1px dotted #CBD5E1;
+    font-size: 15px;
+    color: var(--text-dark);
+    font-family: 'Inter', sans-serif;
+}
+.book-toc li a {
+    color: var(--text-dark);
+    text-decoration: none;
+    transition: color 0.2s;
+}
+.book-toc li a:hover {
+    color: var(--primary);
+}
+.book-toc li .toc-page {
+    color: var(--text-muted);
+    font-weight: 600;
+}
+
+/* Contenu du livre */
+.book-content {
+    font-family: 'Merriweather', 'Georgia', serif; /* Police de lecture */
+    font-size: 16px;
+    line-height: 1.8;
+    color: #333333;
+    text-align: justify;
+}
+.book-content h2 {
+    font-family: 'Inter', sans-serif;
+    font-size: 24px;
+    font-weight: 800;
+    color: var(--primary);
+    margin: 50px 0 20px;
+    text-align: left;
+    border-bottom: 2px solid var(--secondary);
+    padding-bottom: 8px;
+}
+.book-content h3 {
+    font-family: 'Inter', sans-serif;
+    font-size: 18px;
+    font-weight: 700;
+    color: var(--primary-dark);
+    margin: 30px 0 15px;
+    text-align: left;
+}
+.book-content p {
+    margin-bottom: 20px;
+    text-indent: 20px; /* Indentation de paragraphe de livre */
+}
+.book-content p:first-of-type {
+    text-indent: 0;
+}
+.book-content ul, .book-content ol {
+    margin-bottom: 20px;
+    padding-left: 40px;
+}
+.book-content li {
+    margin-bottom: 10px;
+}
+.book-content strong {
+    font-weight: 700;
+    color: var(--text-dark);
+}
+.book-content .highlight-grid {
+    font-family: 'Inter', sans-serif;
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 15px;
+    margin: 30px 0;
+}
+.book-content .highlight {
+    background: #F8FAFC;
+    border: 1px solid #E2E8F0;
+    padding: 15px;
+    border-radius: 8px;
+    text-align: center;
+}
+.book-content .highlight .num {
+    display: block;
+    font-size: 24px;
+    font-weight: 800;
+    color: var(--primary);
+}
+.book-content .highlight .lbl {
+    display: block;
+    font-size: 12px;
+    color: var(--text-muted);
+    text-transform: uppercase;
+    margin-top: 4px;
+}
+
+/* Bouton d'impression */
+.book-print-btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    background: var(--secondary);
+    color: var(--primary);
+    padding: 10px 20px;
+    border-radius: 8px;
+    font-weight: 700;
+    font-size: 14px;
+    border: none;
+    cursor: pointer;
+    transition: all 0.2s;
+    font-family: 'Inter', sans-serif;
+    margin-top: 20px;
+}
+.book-print-btn:hover {
+    background: var(--secondary-dark);
+    transform: translateY(-2px);
+}
+
+/* =====================================================================
    ===== PRINT ========================================================
    ===================================================================== */
 @media print {
-    .header, .bottom-nav, .footer, .doc-actions, .toc, .social-links-footer { display: none !important; }
-    .doc-main { padding-top: 0; }
-    .doc-card { box-shadow: none; padding: 0; max-width: 100%; }
-    body { background: var(--white); padding: 0; }
-    section { page-break-inside: avoid; }
-    h2 { page-break-after: avoid; }
-}
-@media (max-width: 720px) {
-    .doc-card { padding: 28px 20px; }
-    .doc-header h1 { font-size: 24px; }
-    .toc ol { columns: 1; }
-    .faq-header h1 { font-size: 24px; }
+    body.book-page { background: #fff; padding: 0; }
+    .book-container { box-shadow: none; max-width: 100%; border-radius: 0; }
+    .book-cover { background: #fff !important; color: #000 !important; padding: 40px 0; border-bottom: 2px solid #000; }
+    .book-cover .logo { box-shadow: none; border: 1px solid #ccc; }
+    .book-cover .subtitle { color: #333; }
+    .book-cover .meta { color: #666; border-top: 1px solid #ccc; }
+    .book-print-btn, .header, .footer { display: none !important; }
+    .book-body { padding: 40px 0; }
+    .book-content { font-size: 12pt; }
+    .book-toc li { border-bottom: none; }
 }
