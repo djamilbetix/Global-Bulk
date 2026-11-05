@@ -154,12 +154,11 @@
     }
 
     var SupaAPI = {
-        headers: function() { return { 'apikey': SUPABASE_KEY, 'Authorization': 'Bearer ' + SUPABASE_KEY, 'Content-Type': 'application/json', 'Prefer': 'return=representation' }; },
+        headers: function() { return { 'apikey': SUPABASE_KEY, 'Authorization': 'Bearer ' + SUPABASE_KEY, 'Content-Type': 'application/json', 'Accept': 'application/json', 'Prefer': 'return=representation' }; },
         get: function(path) { return fetch(SUPABASE_URL + '/rest/v1/' + path, { headers: SupaAPI.headers() }).then(function(r) { if (!r.ok) return r.text().then(function(t) { throw new Error('GET ' + r.status + ' — ' + t); }); return r.json(); }); },
         post: function(path, body) { return fetch(SUPABASE_URL + '/rest/v1/' + path, { method: 'POST', headers: SupaAPI.headers(), body: JSON.stringify(body) }).then(function(r) { if (!r.ok) return r.text().then(function(t) { throw new Error('POST ' + r.status + ' — ' + t); }); return r.json(); }); },
         patch: function(path, body) { var h = SupaAPI.headers(); h['Prefer'] = 'return=representation'; return fetch(SUPABASE_URL + '/rest/v1/' + path, { method: 'PATCH', headers: h, body: JSON.stringify(body) }).then(function(r) { if (!r.ok) return r.text().then(function(t) { throw new Error('PATCH ' + r.status + ' — ' + t); }); return r.json(); }); },
-        del: function(path) { return fetch(SUPABASE_URL + '/rest/v1/' + path, { method: 'DELETE', headers: SupaAPI.headers() }).then(function(r) { if (!r.ok) return r.text().then(function(t) { throw new Error('DELETE ' + r.status + ' — ' + t); }); return true; }); },
-        upsert: function(path, body, onConflict) { var h = SupaAPI.headers(); h['Prefer'] = 'resolution=merge-duplicates,return=representation'; return fetch(SUPABASE_URL + '/rest/v1/' + path + (onConflict ? '?on_conflict=' + onConflict : ''), { method: 'POST', headers: h, body: JSON.stringify(body) }).then(function(r) { if (!r.ok) return r.text().then(function(t) { throw new Error('UPSERT ' + r.status + ' — ' + t); }); return r.json(); }); }
+        del: function(path) { return fetch(SUPABASE_URL + '/rest/v1/' + path, { method: 'DELETE', headers: SupaAPI.headers() }).then(function(r) { if (!r.ok) return r.text().then(function(t) { throw new Error('DELETE ' + r.status + ' — ' + t); }); return true; }); }
     };
 
     var categories = [
@@ -326,8 +325,43 @@
     }
 
     function isProfileComplete() { if (!userProfile) return false; return !!(userProfile.nom && userProfile.post_nom && userProfile.email && userProfile.phone && userProfile.adresse); }
-    function loadProfileFromSupabase() { if (!piUser) return Promise.resolve(null); return SupaAPI.get('profils?pi_uid=eq.' + encodeURIComponent(piUser.uid) + '&limit=1').then(function(rows) { userProfile = (rows && rows.length > 0) ? rows[0] : null; return userProfile; }).catch(function(e) { console.error('[Supa] loadProfile error', e); userProfile = null; return null; }); }
-    function saveProfileToSupabase(data) { if (!piUser) return Promise.reject(new Error('Not connected')); var payload = { pi_uid: piUser.uid, pi_username: piUser.username, nom: data.nom, post_nom: data.postNom, email: data.email, phone: data.phone, adresse: data.address, updated_at: new Date().toISOString() }; return SupaAPI.upsert('profils', payload, 'pi_uid').then(function(rows) { userProfile = (rows && rows.length > 0) ? rows[0] : payload; return userProfile; }); }
+    
+    function loadProfileFromSupabase() { 
+        if (!piUser) return Promise.resolve(null); 
+        return SupaAPI.get('profils?pi_uid=eq.' + encodeURIComponent(piUser.uid) + '&limit=1')
+            .then(function(rows) { userProfile = (rows && rows.length > 0) ? rows[0] : null; return userProfile; })
+            .catch(function(e) { console.error('[Supa] loadProfile error', e); userProfile = null; return null; }); 
+    }
+
+    function saveProfileToSupabase(data) {
+        if (!piUser) return Promise.reject(new Error('Not connected'));
+        var payload = {
+            pi_uid: piUser.uid, 
+            pi_username: piUser.username,
+            nom: data.nom, 
+            post_nom: data.postNom,
+            email: data.email, 
+            phone: data.phone,
+            adresse: data.address,
+            updated_at: new Date().toISOString()
+        };
+
+        // Try PATCH first
+        return SupaAPI.patch('profils?pi_uid=eq.' + encodeURIComponent(piUser.uid), payload)
+            .then(function(rows) {
+                if (rows && rows.length > 0) {
+                    userProfile = rows[0];
+                    return userProfile;
+                } else {
+                    // If no rows updated, the profile doesn't exist, so POST
+                    return SupaAPI.post('profils', payload).then(function(newRows) {
+                        userProfile = newRows[0];
+                        return userProfile;
+                    });
+                }
+            });
+    }
+
     function loadProductsFromSupabase() { return SupaAPI.get('produits?select=*&order=created_at.desc').then(function(rows) { if (!rows || rows.length === 0) return []; return rows.map(function(r) { return { id: r.id, name: r.name, description: r.description, price: Number(r.price), unit: r.unit, minOrder: r.min_order, stock: r.stock, supplier: r.owner_pi_uid, ownerPiUid: r.owner_pi_uid, country: r.country, verified: !!r.verified, rating: Number(r.rating || 4.5), category: r.category, images: Array.isArray(r.images) ? r.images : (r.images ? JSON.parse(r.images) : []), _fromSupa: true }; }); }).catch(function(e) { console.error('[Supa] loadProducts error', e); return []; }); }
     function saveProductToSupabase(p) { if (!piUser) return Promise.reject(new Error('Not connected')); var payload = { owner_pi_uid: piUser.uid, name: p.name, description: p.description || '', category: p.category, country: p.country, price: p.price, unit: p.unit, min_order: p.minOrder, stock: p.stock, images: p.images && p.images.length ? p.images : [], verified: true, rating: 4.5 }; return SupaAPI.post('produits', payload); }
     function deleteProductFromSupabase(id) { return SupaAPI.del('produits?id=eq.' + encodeURIComponent(id)); }
