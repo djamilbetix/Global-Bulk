@@ -743,220 +743,171 @@ body.standalone-page .footer { margin-top: 40px; }
 .cta-box .btn-outline:hover { background: var(--white); color: var(--primary); }
 
 /* =====================================================================
-   ===== NOUVEAU : Design "Livre" pour le Whitepaper ==================
+   ===== NOUVEAU DESIGN : Page Livre Blanc (Minimaliste) ===============
    ===================================================================== */
-body.book-page {
-    background: #E2E8F0;
-    padding: 30px 15px;
-    font-family: 'Inter', sans-serif;
+body.whitepaper-body {
+    background: #ffffff;
+    color: #1a1a1a;
+    font-family: 'Merriweather', 'Georgia', serif;
+    padding: 0;
+    margin: 0;
 }
-
-.book-container {
+.whitepaper-page {
     max-width: 800px;
     margin: 0 auto;
-    background: #FFFFFF;
-    box-shadow: 0 10px 40px rgba(0,0,0,0.1);
-    border-radius: 4px; /* Un livre a des coins légèrement arrondis ou droits */
-    overflow: hidden;
+    padding: 60px 40px;
+}
+@media (max-width: 600px) {
+    .whitepaper-page { padding: 40px 20px; }
 }
 
-.book-cover {
+.wp-header {
     text-align: center;
-    padding: 80px 40px;
-    background: linear-gradient(135deg, var(--primary), var(--primary-dark));
-    color: white;
-    position: relative;
-}
-.book-cover .logo {
-    width: 70px; height: 70px;
-    object-fit: contain;
-    border-radius: 12px;
-    margin-bottom: 30px;
-    background: white;
-    padding: 8px;
-    box-shadow: 0 4px 12px rgba(0,0,0,0.2);
-}
-.book-cover h1 {
-    font-size: 36px;
-    font-weight: 800;
-    line-height: 1.2;
-    margin-bottom: 15px;
-    letter-spacing: -0.5px;
-}
-.book-cover .subtitle {
-    font-size: 16px;
-    color: rgba(255,255,255,0.8);
-    max-width: 500px;
-    margin: 0 auto 30px;
-    line-height: 1.6;
-}
-.book-cover .meta {
-    font-size: 13px;
-    color: rgba(255,255,255,0.6);
-    display: flex;
-    justify-content: center;
-    gap: 20px;
-    border-top: 1px solid rgba(255,255,255,0.15);
-    padding-top: 20px;
-    max-width: 400px;
-    margin: 0 auto;
-}
-.book-cover .meta span { display: flex; align-items: center; gap: 6px; }
-
-.book-body {
-    padding: 60px;
-}
-@media(max-width: 600px) {
-    .book-body { padding: 30px 20px; }
-    .book-cover { padding: 50px 20px; }
-    .book-cover h1 { font-size: 28px; }
-}
-
-/* Table des matières style livre */
-.book-toc {
-    margin-bottom: 50px;
+    margin-bottom: 60px;
     padding-bottom: 30px;
-    border-bottom: 1px solid #E2E8F0;
+    border-bottom: 1px solid #e0e0e0;
 }
-.book-toc h2 {
-    font-size: 20px;
-    font-weight: 700;
-    color: var(--primary);
+.wp-logo {
+    width: 80px;
+    height: 80px;
+    object-fit: contain;
     margin-bottom: 20px;
+}
+.wp-header h1 {
     font-family: 'Inter', sans-serif;
+    font-size: 32px;
+    font-weight: 800;
+    color: #000;
+    line-height: 1.3;
+    margin-bottom: 12px;
 }
-.book-toc ol {
-    list-style: none;
-    padding: 0;
-}
-.book-toc li {
-    display: flex;
-    justify-content: space-between;
-    padding: 8px 0;
-    border-bottom: 1px dotted #CBD5E1;
-    font-size: 15px;
-    color: var(--text-dark);
+.wp-header .wp-meta {
     font-family: 'Inter', sans-serif;
-}
-.book-toc li a {
-    color: var(--text-dark);
-    text-decoration: none;
-    transition: color 0.2s;
-}
-.book-toc li a:hover {
-    color: var(--primary);
-}
-.book-toc li .toc-page {
-    color: var(--text-muted);
-    font-weight: 600;
+    font-size: 14px;
+    color: #666;
+    text-transform: uppercase;
+    letter-spacing: 1px;
 }
 
-/* Contenu du livre */
-.book-content {
-    font-family: 'Merriweather', 'Georgia', serif; /* Police de lecture */
-    font-size: 16px;
-    line-height: 1.8;
-    color: #333333;
-    text-align: justify;
-}
-.book-content h2 {
+.whitepaper-page h2 {
     font-family: 'Inter', sans-serif;
     font-size: 24px;
-    font-weight: 800;
-    color: var(--primary);
+    font-weight: 700;
+    color: #000;
     margin: 50px 0 20px;
-    text-align: left;
-    border-bottom: 2px solid var(--secondary);
-    padding-bottom: 8px;
+    padding-bottom: 10px;
+    border-bottom: 1px solid #e0e0e0;
 }
-.book-content h3 {
+.whitepaper-page h3 {
+    font-family: 'Inter', sans-serif;
+    font-size: 18px;
+    font-weight: 600;
+    color: #333;
+    margin: 30px 0 15px;
+}
+.whitepaper-page p {
+    font-size: 16px;
+    line-height: 1.8;
+    color: #333;
+    margin-bottom: 20px;
+    text-align: justify;
+}
+.whitepaper-page ul, .whitepaper-page ol {
+    margin-bottom: 20px;
+    padding-left: 30px;
+}
+.whitepaper-page li {
+    font-size: 16px;
+    line-height: 1.7;
+    margin-bottom: 10px;
+    color: #333;
+}
+.whitepaper-page table {
+    width: 100%;
+    border-collapse: collapse;
+    margin: 30px 0;
+    font-family: 'Inter', sans-serif;
+    font-size: 14px;
+}
+.whitepaper-page th, .whitepaper-page td {
+    border: 1px solid #e0e0e0;
+    padding: 12px;
+    text-align: left;
+}
+.whitepaper-page th {
+    background: #f9f9f9;
+    font-weight: 600;
+    color: #000;
+}
+
+/* Section Fondateurs */
+.wp-founders {
+    margin-top: 80px;
+    padding-top: 40px;
+    border-top: 1px solid #e0e0e0;
+    text-align: center;
+}
+.wp-founders h2 {
+    border: none;
+    text-align: center;
+    margin-bottom: 40px;
+}
+.founders-grid {
+    display: flex;
+    justify-content: center;
+    gap: 40px;
+    flex-wrap: wrap;
+}
+.founder-card {
+    text-align: center;
+    max-width: 200px;
+}
+.founder-img {
+    width: 120px;
+    height: 120px;
+    border-radius: 50%;
+    object-fit: cover;
+    margin-bottom: 15px;
+    border: 3px solid #eee;
+}
+.founder-card h3 {
     font-family: 'Inter', sans-serif;
     font-size: 18px;
     font-weight: 700;
-    color: var(--primary-dark);
-    margin: 30px 0 15px;
-    text-align: left;
+    margin-bottom: 4px;
+    color: #000;
 }
-.book-content p {
-    margin-bottom: 20px;
-    text-indent: 20px; /* Indentation de paragraphe de livre */
-}
-.book-content p:first-of-type {
-    text-indent: 0;
-}
-.book-content ul, .book-content ol {
-    margin-bottom: 20px;
-    padding-left: 40px;
-}
-.book-content li {
-    margin-bottom: 10px;
-}
-.book-content strong {
-    font-weight: 700;
-    color: var(--text-dark);
-}
-.book-content .highlight-grid {
+.founder-card p {
     font-family: 'Inter', sans-serif;
-    display: grid;
-    grid-template-columns: repeat(2, 1fr);
-    gap: 15px;
-    margin: 30px 0;
-}
-.book-content .highlight {
-    background: #F8FAFC;
-    border: 1px solid #E2E8F0;
-    padding: 15px;
-    border-radius: 8px;
+    font-size: 13px;
+    color: #666;
+    margin: 0;
     text-align: center;
 }
-.book-content .highlight .num {
-    display: block;
-    font-size: 24px;
-    font-weight: 800;
-    color: var(--primary);
-}
-.book-content .highlight .lbl {
-    display: block;
-    font-size: 12px;
-    color: var(--text-muted);
-    text-transform: uppercase;
-    margin-top: 4px;
-}
 
-/* Bouton d'impression */
-.book-print-btn {
+.wp-print-btn {
     display: inline-flex;
     align-items: center;
     gap: 8px;
-    background: var(--secondary);
-    color: var(--primary);
+    background: #f0f0f0;
+    color: #333;
     padding: 10px 20px;
-    border-radius: 8px;
-    font-weight: 700;
+    border-radius: 6px;
+    font-weight: 600;
     font-size: 14px;
-    border: none;
+    border: 1px solid #ccc;
     cursor: pointer;
     transition: all 0.2s;
     font-family: 'Inter', sans-serif;
     margin-top: 20px;
 }
-.book-print-btn:hover {
-    background: var(--secondary-dark);
-    transform: translateY(-2px);
-}
+.wp-print-btn:hover { background: #e0e0e0; }
 
 /* =====================================================================
    ===== PRINT ========================================================
    ===================================================================== */
 @media print {
-    body.book-page { background: #fff; padding: 0; }
-    .book-container { box-shadow: none; max-width: 100%; border-radius: 0; }
-    .book-cover { background: #fff !important; color: #000 !important; padding: 40px 0; border-bottom: 2px solid #000; }
-    .book-cover .logo { box-shadow: none; border: 1px solid #ccc; }
-    .book-cover .subtitle { color: #333; }
-    .book-cover .meta { color: #666; border-top: 1px solid #ccc; }
-    .book-print-btn, .header, .footer { display: none !important; }
-    .book-body { padding: 40px 0; }
-    .book-content { font-size: 12pt; }
-    .book-toc li { border-bottom: none; }
+    body.whitepaper-body { background: #fff; padding: 0; }
+    .wp-print-btn { display: none !important; }
+    .whitepaper-page { max-width: 100%; padding: 0; }
 }
