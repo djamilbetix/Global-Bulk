@@ -5,189 +5,34 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Global Bulk Whitepaper</title>
     <link rel="icon" href="logoglobalbulk.png" />
-    
-    <!-- Polices : Inter pour les titres, Merriweather pour le texte (style livre) -->
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Merriweather:ital,wght@0,300;0,400;0,700;1,400&display=swap" rel="stylesheet" />
-    
     <style>
-        /* =====================================================================
-           RESET & BASE (Fichier 100% indépendant)
-           ===================================================================== */
         * { margin: 0; padding: 0; box-sizing: border-box; }
+        body { background-color: #ffffff; color: #1a1a1a; font-family: 'Merriweather', 'Georgia', serif; line-height: 1.8; padding-top: 20px; }
+        .whitepaper-container { max-width: 800px; margin: 0 auto; padding: 40px 20px; }
+        .wp-header { text-align: center; margin-bottom: 50px; position: relative; }
+        .wp-header-top { position: relative; display: flex; justify-content: center; align-items: center; margin-bottom: 20px; }
+        .wp-logo { width: 90px; height: 90px; object-fit: contain; }
+        .wp-lang-switch { position: absolute; right: 0; top: 10px; display: flex; gap: 6px; }
+        .wp-lang-btn { background: #ffffff; border: 1px solid #0B2A5B; color: #0B2A5B; border-radius: 50%; width: 34px; height: 34px; font-family: 'Inter', sans-serif; font-size: 11px; font-weight: 700; display: flex; align-items: center; justify-content: center; cursor: pointer; }
+        .wp-lang-btn.active { background: #0B2A5B; color: #ffffff; }
+        .wp-header h1 { font-family: 'Inter', sans-serif; font-size: 26px; font-weight: 800; color: #0B2A5B; text-transform: uppercase; letter-spacing: 1px; margin-bottom: 20px; }
+        .wp-divider { width: 100%; height: 3px; background-color: #0B2A5B; margin: 0 auto; }
         
-        body {
-            background-color: #ffffff;
-            color: #1a1a1a;
-            font-family: 'Merriweather', 'Georgia', serif;
-            line-height: 1.8;
-            padding-top: 20px;
-        }
-
-        .whitepaper-container {
-            max-width: 800px;
-            margin: 0 auto;
-            padding: 40px 20px;
-        }
-
-        /* =====================================================================
-           EN-TÊTE (Style Betix exact)
-           ===================================================================== */
-        .wp-header {
-            text-align: center;
-            margin-bottom: 50px;
-            position: relative;
-        }
-
-        .wp-header-top {
-            position: relative;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            margin-bottom: 20px;
-        }
-
-        .wp-logo {
-            width: 90px;
-            height: 90px;
-            object-fit: contain;
-        }
-
-        .wp-lang-switch {
-            position: absolute;
-            right: 0;
-            top: 10px;
-            display: flex;
-            gap: 6px;
-        }
-
-        .wp-lang-btn {
-            background: #ffffff;
-            border: 1px solid #0B2A5B;
-            color: #0B2A5B;
-            border-radius: 50%;
-            width: 34px;
-            height: 34px;
-            font-family: 'Inter', sans-serif;
-            font-size: 11px;
-            font-weight: 700;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            cursor: pointer;
-        }
-
-        .wp-lang-btn.active {
-            background: #0B2A5B;
-            color: #ffffff;
-        }
-
-        .wp-header h1 {
-            font-family: 'Inter', sans-serif;
-            font-size: 26px;
-            font-weight: 800;
-            color: #0B2A5B;
-            text-transform: uppercase;
-            letter-spacing: 1px;
-            margin-bottom: 20px;
-        }
-
-        .wp-divider {
-            width: 100%;
-            height: 3px;
-            background-color: #0B2A5B;
-            margin: 0 auto;
-        }
-
-        /* =====================================================================
-           TYPOGRAPHIE DU CONTENU
-           ===================================================================== */
-        h2 {
-            font-family: 'Inter', sans-serif;
-            font-size: 20px;
-            font-weight: 800;
-            color: #0B2A5B;
-            text-transform: uppercase;
-            margin: 50px 0 20px;
-            padding-bottom: 10px;
-            border-bottom: 1px solid #e0e0e0;
-        }
-
-        p {
-            font-size: 15px;
-            color: #333333;
-            margin-bottom: 20px;
-            text-align: justify;
-        }
-
+        h2 { font-family: 'Inter', sans-serif; font-size: 20px; font-weight: 800; color: #0B2A5B; text-transform: uppercase; margin: 50px 0 20px; padding-bottom: 10px; border-bottom: 1px solid #e0e0e0; }
+        p { font-size: 15px; color: #333333; margin-bottom: 20px; text-align: justify; }
         strong { color: #0B2A5B; }
+        
+        .wp-founders { margin-top: 40px; }
+        .founders-list { display: flex; flex-direction: column; gap: 25px; }
+        .founder-card { display: flex; align-items: flex-start; gap: 25px; background: #ffffff; border: 1px solid #e0e0e0; border-radius: 12px; padding: 25px; }
+        .founder-avatar-wrapper { flex-shrink: 0; }
+        .founder-avatar { width: 100px; height: 100px; border-radius: 50%; object-fit: cover; border: 3px solid #0B2A5B; }
+        .founder-info { flex: 1; }
+        .founder-info h3 { font-family: 'Inter', sans-serif; font-size: 20px; font-weight: 800; color: #000000; margin: 0 0 4px; }
+        .founder-info .role { font-family: 'Inter', sans-serif; font-size: 14px; font-weight: 700; color: #555555; margin-bottom: 12px; text-align: left; }
+        .founder-info .bio { font-size: 14px; line-height: 1.7; color: #333333; margin: 0; text-align: justify; }
 
-        /* =====================================================================
-           SECTION FONDATEURS (Style Betix exact)
-           ===================================================================== */
-        .wp-founders {
-            margin-top: 40px;
-        }
-
-        .founders-list {
-            display: flex;
-            flex-direction: column;
-            gap: 25px;
-        }
-
-        .founder-card {
-            display: flex;
-            align-items: flex-start;
-            gap: 25px;
-            background: #ffffff;
-            border: 1px solid #e0e0e0;
-            border-radius: 12px;
-            padding: 25px;
-        }
-
-        .founder-avatar-wrapper {
-            flex-shrink: 0;
-        }
-
-        .founder-avatar {
-            width: 100px;
-            height: 100px;
-            border-radius: 50%;
-            object-fit: cover;
-            border: 3px solid #0B2A5B; /* Bordure bleue autour de la photo */
-        }
-
-        .founder-info {
-            flex: 1;
-        }
-
-        .founder-info h3 {
-            font-family: 'Inter', sans-serif;
-            font-size: 20px;
-            font-weight: 800;
-            color: #000000;
-            margin: 0 0 4px;
-        }
-
-        .founder-info .role {
-            font-family: 'Inter', sans-serif;
-            font-size: 14px;
-            font-weight: 700;
-            color: #555555;
-            margin-bottom: 12px;
-            text-align: left;
-        }
-
-        .founder-info .bio {
-            font-size: 14px;
-            line-height: 1.7;
-            color: #333333;
-            margin: 0;
-            text-align: justify;
-        }
-
-        /* =====================================================================
-           RESPONSIVE & PRINT
-           ===================================================================== */
         @media (max-width: 600px) {
             .whitepaper-container { padding: 20px 15px; }
             .wp-header-top { flex-direction: column; gap: 20px; }
@@ -195,7 +40,6 @@
             .founder-card { flex-direction: column; align-items: center; text-align: center; }
             .founder-info .bio { text-align: justify; }
         }
-
         @media print {
             body { background: #fff; }
             .wp-lang-switch { display: none !important; }
@@ -207,7 +51,6 @@
 
     <div class="whitepaper-container">
 
-        <!-- EN-TÊTE -->
         <header class="wp-header">
             <div class="wp-header-top">
                 <img src="logoglobalbulk.png" alt="Global Bulk" class="wp-logo" />
@@ -220,7 +63,6 @@
             <div class="wp-divider"></div>
         </header>
 
-        <!-- INTRODUCTION -->
         <section>
             <h2>1. INTRODUCTION</h2>
             <p><strong>Global Bulk</strong> est une plateforme innovante d'achat en gros pour les professionnels, entièrement décentralisée et construite sur l'écosystème <strong>Pi Network</strong>. Née d'une profonde conviction — que la technologie doit servir l'humanité, et non l'inverse — Global Bulk redéfinit les règles du commerce B2B en offrant une alternative moderne, transparente et universellement accessible.</p>
@@ -230,13 +72,10 @@
             <p>Global Bulk s'adresse à trois publics complémentaires. <strong>Les fournisseurs</strong>, en leur permettant de créer, promouvoir et gérer leurs boutiques sans frais cachés. <strong>Les acheteurs professionnels</strong>, en leur offrant un achat simple, sécurisé et abordable. <strong>Les communautés locales et régionales</strong>, en leur donnant accès à des produits de qualité auparavant inaccessibles faute de moyens de paiement adaptés.</p>
         </section>
 
-        <!-- SECTION FONDATEURS -->
         <section class="wp-founders">
             <h2>1.1 L'ÉQUIPE DIRIGEANTE</h2>
             
             <div class="founders-list">
-                
-                <!-- Profil Djami -->
                 <div class="founder-card">
                     <div class="founder-avatar-wrapper">
                         <img src="djami.jpg" alt="Djami Yakonga" class="founder-avatar" onerror="this.src='https://via.placeholder.com/100x100?text=Photo'">
@@ -248,7 +87,6 @@
                     </div>
                 </div>
 
-                <!-- Profil Freddy -->
                 <div class="founder-card">
                     <div class="founder-avatar-wrapper">
                         <img src="freddy.jpg" alt="Freddy Yumba" class="founder-avatar" onerror="this.src='https://via.placeholder.com/100x100?text=Photo'">
@@ -259,11 +97,9 @@
                         <p class="bio">Expert en gestion d'entreprise et en stratégie opérationnelle, Freddy Yumba assure la direction et la coordination globale du projet Global Bulk. Il veille à la bonne exécution de la feuille de route, à la structuration de l'équipe et à l'alignement constant entre les objectifs stratégiques et les opérations quotidiennes. Grâce à son expérience dans le pilotage de projets complexes, il garantit que la plateforme reste fidèle à sa promesse d'origine.</p>
                     </div>
                 </div>
-
             </div>
         </section>
 
-        <!-- VISION -->
         <section>
             <h2>2. NOTRE VISION</h2>
             <p>Nous croyons en un monde où chacun peut organiser ou participer à des échanges commerciaux sans barrières financières, sans commissions excessives et en toute transparence. Global Bulk vise à devenir la référence des plateformes de commerce de gros décentralisées en Afrique et dans le monde, en offrant une expérience utilisateur irréprochable et en autonomisant à la fois les fournisseurs et les acheteurs.</p>
@@ -271,7 +107,6 @@
             <p><strong>L'analogie du centre commercial :</strong> Imaginez un centre commercial ouvert 24 heures sur 24, sans frontières, où chaque boutique est un fabricant ou grossiste international. Global Bulk reprend ces codes : un plan clair par catégories, une signalétique forte et un système d'orientation permanent via la recherche et les filtres.</p>
         </section>
 
-        <!-- CONCLUSION -->
         <section>
             <h2>3. CONCLUSION</h2>
             <p>Global Bulk transforme le commerce de gros international en un véritable <strong>centre commercial numérique</strong> : allées claires, boutiques vérifiées, services communs, monnaie unique et règles identiques pour tous. Que vous soyez acheteur à la recherche du meilleur fournisseur ou fabricant souhaitant exposer votre catalogue, vous entrez dans un espace organisé, lisible et professionnel.</p>
