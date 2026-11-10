@@ -3,208 +3,421 @@
 <head>
 <meta charset="UTF-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-<title>Livre blanc 2026 — Global Bulk</title>
+<title>Livre Blanc 2026 — Global Bulk</title>
 <meta name="description" content="Livre blanc Global Bulk : le centre commercial B2B mondial." />
 <link rel="icon" href="logoglobalbulk.png" />
+<!-- Polices Google : Inter pour les titres, Merriweather pour le style "livre" -->
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Merriweather:ital,wght@0,300;0,400;0,700;1,400&display=swap" rel="stylesheet" />
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
-<link rel="stylesheet" href="style.css" />
+
+<style>
+    /* =====================================================================
+       RESET & BASE (Fichier 100% indépendant)
+       ===================================================================== */
+    * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+    }
+
+    body {
+        background-color: #ffffff;
+        color: #1a1a1a;
+        font-family: 'Merriweather', 'Georgia', serif; /* Police style livre */
+        line-height: 1.7;
+        -webkit-font-smoothing: antialiased;
+    }
+
+    .whitepaper-container {
+        max-width: 800px;
+        margin: 0 auto;
+        padding: 50px 20px;
+    }
+
+    /* =====================================================================
+       EN-TÊTE (Style Betix)
+       ===================================================================== */
+    .wp-header {
+        text-align: center;
+        margin-bottom: 50px;
+        position: relative;
+    }
+
+    .wp-header-top {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        position: relative;
+        margin-bottom: 25px;
+    }
+
+    .wp-logo {
+        width: 90px;
+        height: 90px;
+        object-fit: contain;
+    }
+
+    .wp-lang-switch {
+        position: absolute;
+        right: 0;
+        top: 0;
+        display: flex;
+        gap: 6px;
+    }
+
+    .wp-lang-btn {
+        background: #ffffff;
+        border: 1px solid #0B2A5B;
+        color: #0B2A5B;
+        border-radius: 50%;
+        width: 34px;
+        height: 34px;
+        font-family: 'Inter', sans-serif;
+        font-size: 11px;
+        font-weight: 700;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        cursor: pointer;
+        transition: all 0.2s;
+    }
+
+    .wp-lang-btn.active {
+        background: #0B2A5B;
+        color: #ffffff;
+    }
+
+    .wp-header h1 {
+        font-family: 'Inter', sans-serif;
+        font-size: 28px;
+        font-weight: 800;
+        color: #0B2A5B;
+        text-transform: uppercase;
+        letter-spacing: 1px;
+        margin-bottom: 20px;
+    }
+
+    .wp-divider {
+        width: 100%;
+        height: 3px;
+        background-color: #0B2A5B;
+        margin: 0 auto;
+    }
+
+    /* =====================================================================
+       TYPOGRAPHIE DU CONTENU
+       ===================================================================== */
+    h2 {
+        font-family: 'Inter', sans-serif;
+        font-size: 22px;
+        font-weight: 800;
+        color: #0B2A5B;
+        text-transform: uppercase;
+        margin: 45px 0 20px;
+        padding-bottom: 8px;
+        border-bottom: 1px solid #e0e0e0;
+    }
+
+    h3 {
+        font-family: 'Inter', sans-serif;
+        font-size: 17px;
+        font-weight: 700;
+        color: #1a1a1a;
+        margin: 30px 0 12px;
+    }
+
+    p {
+        font-size: 15px;
+        color: #333333;
+        margin-bottom: 18px;
+        text-align: justify; /* Texte justifié comme un vrai livre */
+    }
+
+    strong {
+        color: #0B2A5B;
+    }
+
+    ul, ol {
+        margin-bottom: 20px;
+        padding-left: 25px;
+    }
+
+    li {
+        font-size: 15px;
+        color: #333333;
+        margin-bottom: 8px;
+        text-align: justify;
+    }
+
+    /* Tableaux */
+    table {
+        width: 100%;
+        border-collapse: collapse;
+        margin: 25px 0;
+        font-family: 'Inter', sans-serif;
+        font-size: 14px;
+    }
+
+    th, td {
+        border: 1px solid #e0e0e0;
+        padding: 12px;
+        text-align: left;
+    }
+
+    th {
+        background: #f9f9f9;
+        font-weight: 700;
+        color: #0B2A5B;
+    }
+
+    /* =====================================================================
+       SECTION FONDATEURS (Style Betix)
+       ===================================================================== */
+    .wp-founders {
+        margin-top: 50px;
+    }
+
+    .founders-list {
+        display: flex;
+        flex-direction: column;
+        gap: 25px;
+    }
+
+    .founder-card {
+        display: flex;
+        align-items: flex-start;
+        gap: 25px;
+        background: #ffffff;
+        border: 1px solid #e0e0e0;
+        border-radius: 12px;
+        padding: 25px;
+        box-shadow: 0 2px 10px rgba(0,0,0,0.02);
+    }
+
+    .founder-avatar-wrapper {
+        flex-shrink: 0;
+    }
+
+    .founder-avatar {
+        width: 100px;
+        height: 100px;
+        border-radius: 50%;
+        object-fit: cover;
+        border: 3px solid #f0f0f0;
+    }
+
+    .founder-info {
+        flex: 1;
+    }
+
+    .founder-info h3 {
+        font-family: 'Inter', sans-serif;
+        font-size: 20px;
+        font-weight: 800;
+        color: #000000;
+        margin: 0 0 4px;
+        text-transform: none;
+    }
+
+    .founder-info .role {
+        font-family: 'Inter', sans-serif;
+        font-size: 14px;
+        font-weight: 700;
+        color: #555555;
+        margin-bottom: 12px;
+        text-align: left;
+    }
+
+    .founder-info .bio {
+        font-family: 'Merriweather', 'Georgia', serif;
+        font-size: 14px;
+        line-height: 1.7;
+        color: #333333;
+        margin: 0;
+        text-align: justify;
+    }
+
+    /* =====================================================================
+       RESPONSIVE (Mobile)
+       ===================================================================== */
+    @media (max-width: 600px) {
+        .whitepaper-container {
+            padding: 30px 15px;
+        }
+        
+        .wp-header-top {
+            flex-direction: column;
+            gap: 15px;
+        }
+
+        .wp-lang-switch {
+            position: static;
+        }
+
+        .founder-card {
+            flex-direction: column;
+            align-items: center;
+            text-align: center;
+            padding: 20px;
+        }
+
+        .founder-info .bio {
+            text-align: justify;
+        }
+    }
+
+    /* =====================================================================
+       IMPRESSION (PDF)
+       ===================================================================== */
+    @media print {
+        body {
+            background: #ffffff;
+        }
+        .whitepaper-container {
+            padding: 0;
+            max-width: 100%;
+        }
+        .wp-lang-switch {
+            display: none !important;
+        }
+        .founder-card {
+            break-inside: avoid;
+            border: 1px solid #cccccc;
+            box-shadow: none;
+        }
+        .wp-header {
+            margin-bottom: 30px;
+        }
+    }
+</style>
 </head>
-<body class="whitepaper-body">
+<body>
 
-<div class="whitepaper-page">
+<div class="whitepaper-container">
 
-  <!-- En-tête du livre -->
-  <header class="wp-header">
-    <img src="logoglobalbulk.png" alt="Global Bulk" class="wp-logo" />
-    <h1>Global Bulk — Le centre commercial B2B mondial</h1>
-    <p class="wp-meta">Édition Janvier 2026 — Global Bulk Market</p>
-    <button class="wp-print-btn" onclick="window.print()"><i class="fas fa-file-pdf"></i> Télécharger en PDF</button>
-  </header>
-
-  <!-- Contenu du livre -->
-  <section id="resume">
-    <h2>1. Résumé exécutif</h2>
-    <p>Un centre commercial classique réunit sous un même toit des dizaines de boutiques, des services communs (sécurité, information, caisse), une monnaie acceptée partout et une signalétique claire. <strong>Global Bulk applique ce modèle au commerce de gros international.</strong></p>
-    <p>Au lieu d'un bâtiment physique, la plateforme fournit une infrastructure numérique unique où :</p>
-    <ul>
-      <li>Chaque <strong>fournisseur</strong> devient une <em>boutique vérifiée</em> dans une allée thématique.</li>
-      <li>Chaque <strong>acheteur professionnel</strong> devient un <em>client du centre</em>, avec son compte, son panier et son historique.</li>
-      <li>Chaque <strong>catégorie</strong> devient une <em>aile dédiée</em> : électronique, mode, énergie, agroalimentaire, etc.</li>
-      <li>Chaque <strong>transaction</strong> se règle dans une <em>monnaie unique</em> : le Pi.</li>
-    </ul>
-    <p>Ce livre blanc décrit, chapitre après chapitre, l'organisation de ce centre commercial virtuel, les services qu'il rend à ses visiteurs et la manière dont il transforme le sourcing B2B.</p>
-  </section>
-
-  <section id="vision">
-    <h2>2. Vision : un centre commercial B2B planétaire</h2>
-    <h3>2.1 L'analogie du centre commercial</h3>
-    <p>Imaginez un centre commercial ouvert 24 heures sur 24, sans frontières, où chaque boutique est un fabricant ou grossiste international, et où chaque client est une PME, un distributeur ou une centrale d'achat.</p>
-    <p>Dans un centre commercial classique, le visiteur se repère grâce aux enseignes, aux allées numérotées et au plan affiché à l'entrée. Global Bulk reprend ces codes : un plan clair par catégories, une signalétique forte et un système d'orientation permanent via la recherche et les filtres.</p>
-    <h3>2.2 Pourquoi ce modèle fonctionne en B2B</h3>
-    <ul>
-      <li><strong>Regroupement</strong> — tous les fournisseurs d'un secteur au même endroit</li>
-      <li><strong>Comparabilité</strong> — mêmes règles d'affichage pour tous (prix, MOQ, stock, note)</li>
-      <li><strong>Confiance</strong> — contrôle d'entrée obligatoire pour les boutiques</li>
-      <li><strong>Fluidité</strong> — un seul panier, un seul paiement, une seule logique pour tout le centre</li>
-      <li><strong>Accessibilité</strong> — aucun déplacement, aucun visa, aucun décalage horaire</li>
-    </ul>
-  </section>
-
-  <section id="plan">
-    <h2>3. Plan du centre commercial</h2>
-    <h3>3.1 Les allées thématiques</h3>
-    <p>Le centre est organisé en <strong>20 allées thématiques</strong>. Chaque allée regroupe toutes les boutiques d'un même secteur d'activité.</p>
-    <table>
-      <thead>
-        <tr>
-          <th>N°</th>
-          <th>Allée / secteur</th>
-          <th>Exemples de produits</th>
-        </tr>
-      </thead>
-      <tbody>
-        <tr><td>01</td><td>Électronique</td><td>Smartphones, ordinateurs, montres connectées</td></tr>
-        <tr><td>02</td><td>Mode</td><td>Vêtements, textile technique, accessoires</td></tr>
-        <tr><td>03</td><td>Chaussures</td><td>Sport, ville, sécurité</td></tr>
-        <tr><td>04</td><td>Beauté</td><td>Cosmétiques, soins, parfums</td></tr>
-        <tr><td>05</td><td>Maison</td><td>Mobilier, décoration, literie</td></tr>
-        <tr><td>06</td><td>Construction</td><td>Matériaux, outillage, équipement de chantier</td></tr>
-        <tr><td>07</td><td>Agriculture</td><td>Machines, semences, intrants</td></tr>
-        <tr><td>08</td><td>Alimentation</td><td>Café, épices, conserves, produits secs</td></tr>
-        <tr><td>09</td><td>Automobile</td><td>Véhicules, pièces détachées, accessoires</td></tr>
-        <tr><td>10</td><td>Équipements</td><td>Machines industrielles, outillage spécialisé</td></tr>
-        <tr><td>11</td><td>Énergie</td><td>Panneaux solaires, batteries, éclairage LED</td></tr>
-        <tr><td>12</td><td>Fournitures</td><td>Bureautique, papeterie, consommables</td></tr>
-        <tr><td>13</td><td>Bijoux</td><td>Montres, bijoux fantaisie, pierres</td></tr>
-        <tr><td>14</td><td>Jouets</td><td>Jeux enfants, articles de loisirs</td></tr>
-        <tr><td>15</td><td>Librairie</td><td>Livres, manuels scolaires, papeterie</td></tr>
-        <tr><td>16</td><td>Sport</td><td>Équipements sportifs, textiles techniques</td></tr>
-        <tr><td>17</td><td>Instruments</td><td>Instruments de musique, sonorisation</td></tr>
-        <tr><td>18</td><td>Photo</td><td>Appareils, objectifs, accessoires</td></tr>
-        <tr><td>19</td><td>Outillage</td><td>Outils professionnels, machines portatives</td></tr>
-        <tr><td>20</td><td>Animalerie</td><td>Alimentation animale, accessoires</td></tr>
-      </tbody>
-    </table>
-    <h3>3.2 Les entrées du centre</h3>
-    <p>Comme dans un centre commercial physique, plusieurs portes d'entrée sont disponibles :</p>
-    <ul>
-      <li><strong>Par recherche</strong> — la barre de recherche en haut de l'application</li>
-      <li><strong>Par allée</strong> — les filtres de catégories</li>
-      <li><strong>Par région</strong> — le filtre pays</li>
-      <li><strong>Par boutique</strong> — la section Fournisseurs</li>
-    </ul>
-  </section>
-
-  <section id="boutiques">
-    <h2>4. Les boutiques : fournisseurs vérifiés</h2>
-    <h3>4.1 Ouvrir sa boutique</h3>
-    <p>Tout fournisseur peut demander l'ouverture de sa boutique sur Global Bulk. Pour obtenir le <strong>badge Vérifié</strong>, il doit passer par quatre contrôles d'entrée :</p>
-    <ol>
-      <li><strong>Identité (KYC)</strong> — vérification du représentant légal</li>
-      <li><strong>Entreprise</strong> — registre, numéro de TVA, statuts</li>
-      <li><strong>Certifications</strong> — ISO, CE, FCC, selon le secteur</li>
-      <li><strong>Historique et anti-fraude</strong> — contrôle de l'activité et des avis</li>
-    </ol>
-    <h3>4.2 Informations affichées par une boutique</h3>
-    <ul>
-      <li>Enseigne (nom du fournisseur)</li>
-      <li>Pays d'origine</li>
-      <li>Note moyenne sur 5</li>
-      <li>Nombre de produits publiés</li>
-      <li>Badge Vérifié ou non vérifié</li>
-    </ul>
-  </section>
-
-  <section id="clients">
-    <h2>5. Les clients : acheteurs professionnels</h2>
-    <h3>5.1 Carte de membre numérique</h3>
-    <p>Chaque client du centre dispose d'une <strong>carte de membre numérique</strong> liée à son compte Pi Network : pseudo, UID, statut et réseau. Elle remplace mot de passe et formulaires répétitifs.</p>
-    <h3>5.2 Parcours d'un client dans le centre</h3>
-    <ol>
-      <li><strong>Entrée</strong> — connexion via Pi Network</li>
-      <li><strong>Orientation</strong> — filtres par allée, pays ou catégorie</li>
-      <li><strong>Visite</strong> — consultation des fiches produits et des boutiques</li>
-      <li><strong>Panier</strong> — quantité minimum appliquée automatiquement</li>
-      <li><strong>Paiement</strong> — règlement unique en Pi pour tout le panier</li>
-      <li><strong>Sortie</strong> — mise en relation directe avec le fournisseur pour la livraison</li>
-    </ol>
-  </section>
-
-  <section id="monnaie">
-    <h2>6. La monnaie unique : le Pi</h2>
-    <h3>6.1 Une seule devise dans tout le centre</h3>
-    <p>Dans un centre commercial classique, tous les commerçants acceptent la même monnaie. Chez Global Bulk, cette monnaie est le <strong>Pi</strong>, via le SDK Pi Network officiel. Cela évite les conversions multiples, les frais de change et les incompréhensions tarifaires.</p>
-    <h3>6.2 Déroulement d'un paiement</h3>
-    <ol>
-      <li>Le client valide son panier.</li>
-      <li>Une fenêtre Pi Network s'ouvre pour approbation.</li>
-      <li>Le serveur approuve la transaction (étape <em>approve</em>).</li>
-      <li>Le client confirme le paiement.</li>
-      <li>Le serveur finalise (étape <em>complete</em>).</li>
-      <li>La commande est transmise à la boutique.</li>
-    </ol>
-  </section>
-
-  <section id="securite">
-    <h2>7. Sécurité et confiance</h2>
-    <h3>7.1 Contrôle d'entrée</h3>
-    <p>Aucune boutique n'est admise sans validation. Les quatre étapes du contrôle fournisseur garantissent que seules des entreprises réelles et identifiables opèrent dans le centre.</p>
-    <h3>7.2 Protection des visiteurs</h3>
-    <ul>
-      <li>Aucun mot de passe stocké : authentification à 100 % via Pi Network</li>
-      <li>Données chiffrées et hébergées sur serveurs sécurisés</li>
-      <li>Aucune revente ni partage commercial des données</li>
-    </ul>
-  </section>
-
-  <section id="chiffres">
-    <h2>8. Le centre en chiffres</h2>
-    <table>
-      <thead>
-        <tr><th>Indicateur</th><th>Valeur</th></tr>
-      </thead>
-      <tbody>
-        <tr><td>Boutiques référencées</td><td>12 480</td></tr>
-        <tr><td>Produits exposés</td><td>45 600</td></tr>
-        <tr><td>Pays d'implantation</td><td>89</td></tr>
-        <tr><td>Commandes passées</td><td>28 750</td></tr>
-      </tbody>
-    </table>
-  </section>
-
-  <section id="conclusion">
-    <h2>9. Conclusion</h2>
-    <p>Global Bulk transforme le commerce de gros international en un véritable <strong>centre commercial numérique</strong> : allées claires, boutiques vérifiées, services communs, monnaie unique et règles identiques pour tous. Que vous soyez acheteur à la recherche du meilleur fournisseur ou fabricant souhaitant exposer votre catalogue, vous entrez dans un espace organisé, lisible et professionnel.</p>
-  </section>
-
-  <!-- SECTION FONDATEURS -->
-  <section class="wp-founders">
-    <h2>Équipe Dirigeante</h2>
-    <div class="founders-grid">
-      
-      <!-- Profil 1 : Freddy Yumba -->
-      <div class="founder-card">
-        <div class="founder-img-placeholder">
-            <!-- L'image s'appelle freddy.jpg -->
-            <img src="freddy.jpg" alt="Freddy Yumba" class="founder-img" style="width:100%; height:100%; border-radius:50%; object-fit:cover;" onerror="this.style.display='none'; this.parentElement.innerHTML='<span style=\'font-size: 12px; color: #666; text-align: center;\'>Photo de<br>Freddy Yumba<br>(freddy.jpg)</span>';">
+    <!-- EN-TÊTE (Design Betix) -->
+    <header class="wp-header">
+        <div class="wp-header-top">
+            <img src="logoglobalbulk.png" alt="Global Bulk" class="wp-logo" />
+            <div class="wp-lang-switch">
+                <button class="wp-lang-btn active">FR</button>
+                <button class="wp-lang-btn">EN</button>
+            </div>
         </div>
-        <h3>Freddy Yumba</h3>
-        <p>Directeur et Chef du projet</p>
-      </div>
+        <h1>GLOBAL BULK WHITEPAPER</h1>
+        <div class="wp-divider"></div>
+    </header>
 
-      <!-- Profil 2 : Djami Yakonga -->
-      <div class="founder-card">
-        <div class="founder-img-placeholder">
-            <!-- L'image s'appelle djami.jpg -->
-            <img src="djami.jpg" alt="Djami Yakonga" class="founder-img" style="width:100%; height:100%; border-radius:50%; object-fit:cover;" onerror="this.style.display='none'; this.parentElement.innerHTML='<span style=\'font-size: 12px; color: #666; text-align: center;\'>Photo de<br>Djami Yakonga<br>(djami.jpg)</span>';">
+    <!-- INTRODUCTION -->
+    <section id="introduction">
+        <h2>1. INTRODUCTION</h2>
+        <p><strong>Global Bulk</strong> est une plateforme innovante d'achat en gros pour les professionnels, entièrement décentralisée et construite sur l'écosystème <strong>Pi Network</strong>. Née d'une profonde conviction — que la technologie doit servir l'humanité, et non l'inverse — Global Bulk redéfinit les règles du commerce B2B en offrant une alternative moderne, transparente et universellement accessible.</p>
+        
+        <p>Notre mission est claire : <strong>démocratiser l'accès au commerce de gros international</strong> en utilisant la cryptomonnaie Pi comme principal moyen de paiement. Là où les plateformes traditionnelles imposent des barrières financières, des commissions excessives et des délais de paiement interminables, Global Bulk propose une solution simple, instantanée et sans intermédiaire.</p>
+
+        <p>Global Bulk s'adresse à trois publics complémentaires. <strong>Les fournisseurs</strong>, en leur permettant de créer, promouvoir et gérer leurs boutiques sans frais cachés, avec un paiement instantané et une visibilité maximale. <strong>Les acheteurs professionnels</strong>, en leur offrant un achat simple, sécurisé et abordable, accessible depuis un simple portefeuille Pi. <strong>Les communautés locales et régionales</strong>, en leur donnant accès à des produits de qualité auparavant inaccessibles faute de moyens de paiement adaptés.</p>
+
+        <p>Dans un monde où la technologie blockchain transforme les industries à leur cœur, Global Bulk vise à devenir un acteur clé de la <strong>décentralisation du secteur du commerce de gros</strong>. Nous croyons fermement que l'avenir du sourcing B2B réside dans l'élimination des intermédiaires, la transparence totale et l'accessibilité universelle, quel que soit le pays, le statut social ou le niveau de revenu.</p>
+
+        <p>Avec Global Bulk, chaque boutique est un <strong>espace vérifié</strong>, chaque transaction est enregistrée sur la blockchain, et chaque utilisateur bénéficie d'une sécurité renforcée sans compromettre la simplicité. Notre objectif n'est pas seulement de vendre des produits : c'est de construire un écosystème où les fournisseurs et les acheteurs sont directement connectés, dans un climat de confiance mutuelle rendu possible par la technologie.</p>
+    </section>
+
+    <!-- SECTION FONDATEURS -->
+    <section class="wp-founders">
+        <h2>1.1 L'ÉQUIPE DIRIGEANTE</h2>
+        
+        <div class="founders-list">
+            
+            <!-- Profil 1 : Djami Yakonga -->
+            <div class="founder-card">
+                <div class="founder-avatar-wrapper">
+                    <!-- L'image s'appelle djami.jpg -->
+                    <img src="djami.jpg" alt="Djami Yakonga" class="founder-avatar" onerror="this.src='data:image/svg+xml;utf8,<svg xmlns=\'http://www.w3.org/2000/svg\' width=\'100\' height=\'100\'><rect width=\'100\' height=\'100\' fill=\'%23f0f0f0\'/><text x=\'50\' y=\'55\' text-anchor=\'middle\' font-size=\'12\' fill=\'%23999\'>Photo</text></svg>';">
+                </div>
+                <div class="founder-info">
+                    <h3>Djami Yakonga</h3>
+                    <p class="role">Fondateur et Directeur du Développement</p>
+                    <p class="bio">Un entrepreneur visionnaire passionné par les nouvelles technologies et l'inclusion financière, il est le fondateur et l'initiateur du projet Global Bulk. Il a imaginé cette plateforme pour répondre à un besoin fondamental : faciliter les échanges commerciaux B2B tout en offrant un moyen de paiement accessible à tous, y compris les populations non bancarisées. Fort d'une solide expérience en gestion de projet, finance et développement commercial, il a réuni autour de cette vision ambitieuse une équipe talentueuse et complémentaire. Sa mission : faire de Global Bulk un acteur clé au service du commerce, de l'industrie et de l'éducation à l'échelle mondiale, en plaçant l'humain et l'accessibilité au cœur de chaque décision.</p>
+                </div>
+            </div>
+
+            <!-- Profil 2 : Freddy Yumba -->
+            <div class="founder-card">
+                <div class="founder-avatar-wrapper">
+                    <!-- L'image s'appelle freddy.jpg -->
+                    <img src="freddy.jpg" alt="Freddy Yumba" class="founder-avatar" onerror="this.src='data:image/svg+xml;utf8,<svg xmlns=\'http://www.w3.org/2000/svg\' width=\'100\' height=\'100\'><rect width=\'100\' height=\'100\' fill=\'%23f0f0f0\'/><text x=\'50\' y=\'55\' text-anchor=\'middle\' font-size=\'12\' fill=\'%23999\'>Photo</text></svg>';">
+                </div>
+                <div class="founder-info">
+                    <h3>Freddy Yumba</h3>
+                    <p class="role">Directeur et Chef de Projet</p>
+                    <p class="bio">Expert en gestion d'entreprise et en stratégie opérationnelle, Freddy Yumba assure la direction et la coordination globale du projet Global Bulk. Il veille à la bonne exécution de la feuille de route, à la structuration de l'équipe et à l'alignement constant entre les objectifs stratégiques et les opérations quotidiennes. Grâce à son expérience dans le pilotage de projets complexes, il garantit que la plateforme reste fidèle à sa promesse d'origine : offrir un service de qualité, sécurisé et accessible à l'ensemble de la communauté Pi Network et au-delà.</p>
+                </div>
+            </div>
+
         </div>
-        <h3>Djami Yakonga</h3>
-        <p>Développeur</p>
-      </div>
+    </section>
 
-    </div>
-  </section>
+    <!-- VISION -->
+    <section id="vision">
+        <h2>2. NOTRE VISION</h2>
+        <p>Nous croyons en un monde où chacun peut organiser ou participer à des échanges commerciaux sans barrières financières, sans commissions excessives et en toute transparence. Global Bulk vise à devenir la référence des plateformes de commerce de gros décentralisées en Afrique et dans le monde, en offrant une expérience utilisateur irréprochable et en autonomisant à la fois les fournisseurs et les acheteurs.</p>
+        
+        <h3>2.1 L'analogie du centre commercial</h3>
+        <p>Imaginez un centre commercial ouvert 24 heures sur 24, sans frontières, où chaque boutique est un fabricant ou grossiste international, et où chaque client est une PME, un distributeur ou une centrale d'achat. Dans un centre commercial classique, le visiteur se repère grâce aux enseignes, aux allées numérotées et au plan affiché à l'entrée. Global Bulk reprend ces codes : un plan clair par catégories, une signalétique forte et un système d'orientation permanent via la recherche et les filtres.</p>
+        
+        <h3>2.2 Pourquoi ce modèle fonctionne en B2B</h3>
+        <ul>
+            <li><strong>Regroupement</strong> — tous les fournisseurs d'un secteur au même endroit</li>
+            <li><strong>Comparabilité</strong> — mêmes règles d'affichage pour tous (prix, MOQ, stock, note)</li>
+            <li><strong>Confiance</strong> — contrôle d'entrée obligatoire pour les boutiques</li>
+            <li><strong>Fluidité</strong> — un seul panier, un seul paiement, une seule logique pour tout le centre</li>
+            <li><strong>Accessibilité</strong> — aucun déplacement, aucun visa, aucun décalage horaire</li>
+        </ul>
+    </section>
+
+    <!-- PLAN DU CENTRE -->
+    <section id="plan">
+        <h2>3. PLAN DU CENTRE COMMERCIAL</h2>
+        <h3>3.1 Les allées thématiques</h3>
+        <p>Le centre est organisé en <strong>20 allées thématiques</strong>. Chaque allée regroupe toutes les boutiques d'un même secteur d'activité.</p>
+        <table>
+            <thead>
+                <tr>
+                    <th>N°</th>
+                    <th>Allée / secteur</th>
+                    <th>Exemples de produits</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr><td>01</td><td>Électronique</td><td>Smartphones, ordinateurs, montres connectées</td></tr>
+                <tr><td>02</td><td>Mode</td><td>Vêtements, textile technique, accessoires</td></tr>
+                <tr><td>03</td><td>Chaussures</td><td>Sport, ville, sécurité</td></tr>
+                <tr><td>04</td><td>Beauté</td><td>Cosmétiques, soins, parfums</td></tr>
+                <tr><td>05</td><td>Maison</td><td>Mobilier, décoration, literie</td></tr>
+                <tr><td>06</td><td>Construction</td><td>Matériaux, outillage, équipement de chantier</td></tr>
+                <tr><td>07</td><td>Agriculture</td><td>Machines, semences, intrants</td></tr>
+                <tr><td>08</td><td>Alimentation</td><td>Café, épices, conserves, produits secs</td></tr>
+                <tr><td>09</td><td>Automobile</td><td>Véhicules, pièces détachées, accessoires</td></tr>
+                <tr><td>10</td><td>Équipements</td><td>Machines industrielles, outillage spécialisé</td></tr>
+                <tr><td>11</td><td>Énergie</td><td>Panneaux solaires, batteries, éclairage LED</td></tr>
+                <tr><td>12</td><td>Fournitures</td><td>Bureautique, papeterie, consommables</td></tr>
+                <tr><td>13</td><td>Bijoux</td><td>Montres, bijoux fantaisie, pierres</td></tr>
+                <tr><td>14</td><td>Jouets</td><td>Jeux enfants, articles de loisirs</td></tr>
+                <tr><td>15</td><td>Librairie</td><td>Livres, manuels scolaires, papeterie</td></tr>
+                <tr><td>16</td><td>Sport</td><td>Équipements sportifs, textiles techniques</td></tr>
+                <tr><td>17</td><td>Instruments</td><td>Instruments de musique, sonorisation</td></tr>
+                <tr><td>18</td><td>Photo</td><td>Appareils, objectifs, accessoires</td></tr>
+                <tr><td>19</td><td>Outillage</td><td>Outils professionnels, machines portatives</td></tr>
+                <tr><td>20</td><td>Animalerie</td><td>Alimentation animale, accessoires</td></tr>
+            </tbody>
+        </table>
+    </section>
+
+    <!-- CONCLUSION -->
+    <section id="conclusion">
+        <h2>4. CONCLUSION</h2>
+        <p>Global Bulk transforme le commerce de gros international en un véritable <strong>centre commercial numérique</strong> : allées claires, boutiques vérifiées, services communs, monnaie unique et règles identiques pour tous. Que vous soyez acheteur à la recherche du meilleur fournisseur ou fabricant souhaitant exposer votre catalogue, vous entrez dans un espace organisé, lisible et professionnel.</p>
+    </section>
 
 </div>
 
