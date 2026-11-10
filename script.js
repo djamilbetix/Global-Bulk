@@ -154,7 +154,7 @@
     }
 
     var SupaAPI = {
-        headers: function() { return { 'apikey': SUPABASE_KEY, 'Authorization': 'Bearer ' + SUPABASE_KEY, 'Content-Type': 'application/json', 'Accept': 'application/json', 'Prefer': 'return=representation' }; },
+        headers: function() { return { 'apikey': SUPABASE_KEY, 'Authorization': 'Bearer ' + SUPABASE_KEY, 'Content-Type': 'application/json', 'Prefer': 'return=representation' }; },
         get: function(path) { return fetch(SUPABASE_URL + '/rest/v1/' + path, { headers: SupaAPI.headers() }).then(function(r) { if (!r.ok) return r.text().then(function(t) { throw new Error('GET ' + r.status + ' — ' + t); }); return r.json(); }); },
         post: function(path, body) { return fetch(SUPABASE_URL + '/rest/v1/' + path, { method: 'POST', headers: SupaAPI.headers(), body: JSON.stringify(body) }).then(function(r) { if (!r.ok) return r.text().then(function(t) { throw new Error('POST ' + r.status + ' — ' + t); }); return r.json(); }); },
         patch: function(path, body) { var h = SupaAPI.headers(); h['Prefer'] = 'return=representation'; return fetch(SUPABASE_URL + '/rest/v1/' + path, { method: 'PATCH', headers: h, body: JSON.stringify(body) }).then(function(r) { if (!r.ok) return r.text().then(function(t) { throw new Error('PATCH ' + r.status + ' — ' + t); }); return r.json(); }); },
@@ -333,8 +333,10 @@
             .catch(function(e) { console.error('[Supa] loadProfile error', e); userProfile = null; return null; }); 
     }
 
+    // NOUVELLE MÉTHODE ROBUSTE DE SAUVEGARDE
     function saveProfileToSupabase(data) {
         if (!piUser) return Promise.reject(new Error('Not connected'));
+        
         var payload = {
             pi_uid: piUser.uid, 
             pi_username: piUser.username,
@@ -346,18 +348,24 @@
             updated_at: new Date().toISOString()
         };
 
-        // Try PATCH first
-        return SupaAPI.patch('profils?pi_uid=eq.' + encodeURIComponent(piUser.uid), payload)
+        // 1. On vérifie d'abord si le profil existe déjà
+        return SupaAPI.get('profils?pi_uid=eq.' + encodeURIComponent(piUser.uid))
             .then(function(rows) {
                 if (rows && rows.length > 0) {
-                    userProfile = rows[0];
-                    return userProfile;
+                    // S'il existe, on le met à jour avec PATCH
+                    var existingId = rows[0].id; // L'ID généré par Supabase
+                    return SupaAPI.patch('profils?id=eq.' + existingId, payload)
+                        .then(function(updatedRows) {
+                            userProfile = updatedRows[0];
+                            return userProfile;
+                        });
                 } else {
-                    // If no rows updated, the profile doesn't exist, so POST
-                    return SupaAPI.post('profils', payload).then(function(newRows) {
-                        userProfile = newRows[0];
-                        return userProfile;
-                    });
+                    // S'il n'existe pas, on le crée avec POST
+                    return SupaAPI.post('profils', payload)
+                        .then(function(newRows) {
+                            userProfile = newRows[0];
+                            return userProfile;
+                        });
                 }
             });
     }
