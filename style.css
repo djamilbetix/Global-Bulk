@@ -703,46 +703,6 @@ body.drawer-open .bottom-nav {
 }
 
 /* =====================================================================
-   ===== Pages autonomes (whitepaper.html / faq.html) =================
-   ===================================================================== */
-body.standalone-page { padding-bottom: 0; }
-body.standalone-page .doc-main { padding-top: 100px; padding-bottom: 40px; min-height: calc(100vh - 200px); }
-body.standalone-page .footer { margin-top: 40px; }
-.doc-card { background: var(--white); border-radius: var(--radius); box-shadow: var(--shadow-lg); max-width: 920px; margin: 0 auto; padding: 48px 44px; }
-.doc-header { text-align: left; margin-bottom: 32px; }
-.doc-badge { display: inline-block; background: var(--secondary); color: var(--primary); font-size: 12px; font-weight: 700; text-transform: uppercase; letter-spacing: 1px; padding: 6px 14px; border-radius: 999px; margin-bottom: 16px; }
-.doc-header h1 { color: var(--primary); font-size: 32px; line-height: 1.25; font-weight: 800; margin-bottom: 12px; }
-.doc-subtitle { color: var(--text-muted); font-size: 16px; margin-bottom: 20px; }
-.doc-meta { display: flex; gap: 18px; flex-wrap: wrap; color: var(--text-muted); font-size: 13px; margin-bottom: 24px; }
-.doc-meta i { color: var(--secondary); margin-right: 4px; }
-.doc-actions { display: flex; gap: 12px; flex-wrap: wrap; }
-.toc { background: var(--gray-light); border-left: 4px solid var(--secondary); border-radius: var(--radius-sm); padding: 20px 24px; margin-bottom: 36px; }
-.toc h2 { font-size: 15px; color: var(--primary); margin-bottom: 12px; text-transform: uppercase; letter-spacing: 1px; }
-.toc ol { padding-left: 20px; columns: 2; column-gap: 32px; }
-.toc li { margin-bottom: 6px; color: var(--text-dark); font-size: 14px; }
-.toc a { color: var(--text-dark); }
-.toc a:hover { color: var(--primary); }
-.whitepaper section { margin-bottom: 38px; scroll-margin-top: 100px; }
-.whitepaper h2 { color: var(--primary); font-size: 22px; margin-bottom: 14px; padding-bottom: 8px; border-bottom: 2px solid #e9ecf0; }
-.whitepaper h3 { color: var(--primary-dark); font-size: 17px; margin: 20px 0 10px; }
-.whitepaper p { margin-bottom: 14px; color: var(--text-dark); font-size: 15.5px; }
-.whitepaper ul, .whitepaper ol { padding-left: 22px; margin-bottom: 16px; }
-.whitepaper li { margin-bottom: 6px; font-size: 15px; }
-.highlight-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(160px, 1fr)); gap: 16px; margin: 24px 0; }
-.highlight { background: var(--gray-light); border-radius: var(--radius); padding: 18px; text-align: center; }
-.highlight .num { display: block; font-size: 24px; font-weight: 800; color: var(--primary); }
-.highlight .lbl { display: block; font-size: 12.5px; color: var(--text-muted); text-transform: uppercase; letter-spacing: 0.5px; margin-top: 4px; }
-.data-table { width: 100%; border-collapse: collapse; margin: 16px 0; font-size: 14px; }
-.data-table th, .data-table td { padding: 10px 12px; border-bottom: 1px solid #e9ecf0; text-align: left; }
-.data-table th { background: var(--gray-light); color: var(--primary); font-weight: 700; }
-.data-table tr:hover td { background: var(--gray-light); }
-.cta-box { background: linear-gradient(135deg, var(--primary), var(--primary-dark)); color: var(--white); border-radius: var(--radius); padding: 28px; text-align: center; margin-top: 24px; }
-.cta-box p { color: var(--white); font-size: 17px; margin-bottom: 16px; }
-.cta-actions { display: flex; gap: 12px; justify-content: center; flex-wrap: wrap; }
-.cta-box .btn-outline { border-color: var(--white); color: var(--white); }
-.cta-box .btn-outline:hover { background: var(--white); color: var(--primary); }
-
-/* =====================================================================
    ===== NOUVEAU DESIGN : Page Livre Blanc (Minimaliste) ===============
    ===================================================================== */
 body.whitepaper-body {
@@ -869,6 +829,14 @@ body.whitepaper-body {
     object-fit: cover;
     margin-bottom: 15px;
     border: 3px solid #eee;
+}
+.founder-img-placeholder {
+    width: 120px; height: 120px;
+    border-radius: 50%;
+    background: #f9f9f9;
+    display: flex; align-items: center; justify-content: center;
+    margin: 0 auto 15px;
+    border: 2px dashed #ccc;
 }
 .founder-card h3 {
     font-family: 'Inter', sans-serif;
