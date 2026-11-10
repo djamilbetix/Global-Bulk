@@ -333,7 +333,7 @@
             .catch(function(e) { console.error('[Supa] loadProfile error', e); userProfile = null; return null; }); 
     }
 
-    // --- CORRECTION ROBUSTE DE LA SAUVEGARDE DU PROFIL ---
+    // --- SAUVEGARDE ROBUSTE DU PROFIL ---
     function saveProfileToSupabase(data) {
         if (!piUser) return Promise.reject(new Error('Not connected'));
         
@@ -348,24 +348,15 @@
             updated_at: new Date().toISOString()
         };
 
-        // 1. On vérifie si le profil existe déjà (GET)
         return SupaAPI.get('profils?pi_uid=eq.' + encodeURIComponent(piUser.uid))
             .then(function(rows) {
                 if (rows && rows.length > 0) {
-                    // 2a. S'il existe, on le met à jour avec PATCH
                     var existingId = rows[0].id; 
                     return SupaAPI.patch('profils?id=eq.' + existingId, payload)
-                        .then(function(updatedRows) {
-                            userProfile = updatedRows[0];
-                            return userProfile;
-                        });
+                        .then(function(updatedRows) { userProfile = updatedRows[0]; return userProfile; });
                 } else {
-                    // 2b. S'il n'existe pas, on le crée avec POST
                     return SupaAPI.post('profils', payload)
-                        .then(function(newRows) {
-                            userProfile = newRows[0];
-                            return userProfile;
-                        });
+                        .then(function(newRows) { userProfile = newRows[0]; return userProfile; });
                 }
             });
     }
@@ -574,9 +565,6 @@
     }
     function hideMainContent() { document.getElementById('mainContent').style.display = 'none'; }
 
-    // ==========================================
-    // DESIGN FICHE PRODUIT (MOBILE OPTIMISÉ)
-    // ==========================================
     window.showProductDetail = function(id) {
         var p = products.find(function(x) { return String(x.id) === String(id); });
         if (!p) return;
@@ -653,26 +641,12 @@
             if (content) content.innerHTML = renderSideDrawerContent(tabId);
         }
 
-        if (tabId === 'livre-blanc') initDocDrawerEvents();
         if (tabId === 'mon-profil') initProfileFormEvents();
         if (tabId === 'mes-ventes') initMesVentesEvents();
         if (tabId === 'parametres') initSettingsEvents();
     }
     function closeSideDrawer() { var drawer = document.getElementById('sideDrawer'); var overlay = document.getElementById('sideDrawerOverlay'); if (drawer) drawer.classList.remove('open'); if (overlay) overlay.classList.remove('open'); document.body.style.overflow = ''; document.body.classList.remove('drawer-open'); }
     window.closeSideDrawer = closeSideDrawer;
-
-    function initDocDrawerEvents() {
-        var items = document.querySelectorAll('#sideDrawerContent .doc-item');
-        for (var i = 0; i < items.length; i++) {
-            (function(item) {
-                item.addEventListener('click', function() {
-                    var url = item.getAttribute('data-url');
-                    if (url) window.location.href = url;
-                    else showToast('Coming soon', 'info');
-                });
-            })(items[i]);
-        }
-    }
 
     function initSettingsEvents() {
         var content = document.getElementById('sideDrawerContent'); if (!content) return;
@@ -883,21 +857,31 @@
             case 'historique': return renderHistorique();
             case 'parametres': return renderSettings();
             case 'langues': return renderSettings();
-            // LIVRE BLANC : Lien direct vers le fichier autonome
-            case 'livre-blanc':
-                return '<h3><i class="fas fa-book"></i> ' + t('whitepaper_title') + '</h3>' +
-                    '<p style="color:var(--text-muted);font-size:14px;margin-bottom:20px;line-height:1.6;">' + t('whitepaper_intro') + '</p>' +
-                    '<a href="whitepaper.html" target="_blank" class="btn btn-primary btn-block" style="padding: 16px; font-size: 16px;">' +
-                        '<i class="fas fa-book-open"></i> ' + t('whitepaper_read') +
-                    '</a>';
             default: return '<p>—</p>';
         }
     }
 
+    // GESTION DES CLICS SUR LE MENU
     document.querySelectorAll('.menu-item').forEach(function(item) {
-        item.addEventListener('click', function() {
-            var tab = this.getAttribute('data-tab'); var label = this.querySelector('.menu-label').textContent;
-            if (tab === 'faq') { window.location.href = 'faq.html'; return; } if (tab === 'mes-commandes') { currentCommandesTab = 'pending'; } openSideDrawer(tab, label);
+        item.addEventListener('click', function(e) {
+            // On vérifie si c'est un lien direct (comme le Whitepaper)
+            if (this.tagName.toLowerCase() === 'a') {
+                return; // On laisse le navigateur suivre le lien href
+            }
+
+            var tab = this.getAttribute('data-tab'); 
+            var label = this.querySelector('.menu-label').textContent;
+            
+            if (tab === 'faq') { 
+                window.location.href = 'faq.html'; 
+                return; 
+            } 
+            
+            if (tab === 'mes-commandes') { 
+                currentCommandesTab = 'pending'; 
+            } 
+            
+            openSideDrawer(tab, label);
         });
     });
 
