@@ -6,28 +6,32 @@
     <title>Global Bulk Whitepaper</title>
     <link rel="icon" href="logoglobalbulk.png" />
     
-    <!-- Polices Google : Inter pour les titres, Merriweather pour le texte (style livre) -->
+    <!-- Polices : Inter pour les titres, Merriweather pour le texte (style livre) -->
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Merriweather:ital,wght@0,300;0,400;0,700;1,400&display=swap" rel="stylesheet" />
     
     <style>
-        /* RESET & BASE */
+        /* =====================================================================
+           RESET & BASE (Fichier 100% indépendant)
+           ===================================================================== */
         * { margin: 0; padding: 0; box-sizing: border-box; }
         
         body {
-            background-color: #ffffff; /* Fond blanc pur */
+            background-color: #ffffff;
             color: #1a1a1a;
-            font-family: 'Merriweather', 'Georgia', serif; /* Police style livre */
+            font-family: 'Merriweather', 'Georgia', serif;
             line-height: 1.8;
             padding-top: 20px;
         }
 
         .whitepaper-container {
-            max-width: 800px; /* Largeur pour une lecture confortable */
+            max-width: 800px;
             margin: 0 auto;
             padding: 40px 20px;
         }
 
-        /* EN-TÊTE (Style Betix) */
+        /* =====================================================================
+           EN-TÊTE (Style Betix exact)
+           ===================================================================== */
         .wp-header {
             text-align: center;
             margin-bottom: 50px;
@@ -90,11 +94,13 @@
         .wp-divider {
             width: 100%;
             height: 3px;
-            background-color: #0B2A5B; /* Barre bleue foncée */
+            background-color: #0B2A5B;
             margin: 0 auto;
         }
 
-        /* TYPOGRAPHIE DU CONTENU */
+        /* =====================================================================
+           TYPOGRAPHIE DU CONTENU
+           ===================================================================== */
         h2 {
             font-family: 'Inter', sans-serif;
             font-size: 20px;
@@ -103,21 +109,21 @@
             text-transform: uppercase;
             margin: 50px 0 20px;
             padding-bottom: 10px;
-            border-bottom: 1px solid #e0e0e0; /* Ligne fine sous les titres */
+            border-bottom: 1px solid #e0e0e0;
         }
 
         p {
             font-size: 15px;
             color: #333333;
             margin-bottom: 20px;
-            text-align: justify; /* Texte justifié */
+            text-align: justify;
         }
 
-        strong {
-            color: #0B2A5B; /* Mots en gras en bleu */
-        }
+        strong { color: #0B2A5B; }
 
-        /* SECTION FONDATEURS (Cartes avec bordure) */
+        /* =====================================================================
+           SECTION FONDATEURS (Style Betix exact)
+           ===================================================================== */
         .wp-founders {
             margin-top: 40px;
         }
@@ -142,13 +148,12 @@
             flex-shrink: 0;
         }
 
-        /* Photo ronde avec bordure bleue */
         .founder-avatar {
             width: 100px;
             height: 100px;
             border-radius: 50%;
             object-fit: cover;
-            border: 3px solid #0B2A5B; 
+            border: 3px solid #0B2A5B; /* Bordure bleue autour de la photo */
         }
 
         .founder-info {
@@ -180,7 +185,9 @@
             text-align: justify;
         }
 
-        /* RESPONSIVE (Mobile) */
+        /* =====================================================================
+           RESPONSIVE & PRINT
+           ===================================================================== */
         @media (max-width: 600px) {
             .whitepaper-container { padding: 20px 15px; }
             .wp-header-top { flex-direction: column; gap: 20px; }
@@ -189,7 +196,6 @@
             .founder-info .bio { text-align: justify; }
         }
 
-        /* IMPRESSION PDF */
         @media print {
             body { background: #fff; }
             .wp-lang-switch { display: none !important; }
@@ -222,11 +228,9 @@
             <p>Notre mission est claire : <strong>démocratiser l'accès au commerce de gros international</strong> en utilisant la cryptomonnaie Pi comme principal moyen de paiement. Là où les plateformes traditionnelles imposent des barrières financières, des commissions excessives et des délais de paiement interminables, Global Bulk propose une solution simple, instantanée et sans intermédiaire.</p>
 
             <p>Global Bulk s'adresse à trois publics complémentaires. <strong>Les fournisseurs</strong>, en leur permettant de créer, promouvoir et gérer leurs boutiques sans frais cachés. <strong>Les acheteurs professionnels</strong>, en leur offrant un achat simple, sécurisé et abordable. <strong>Les communautés locales et régionales</strong>, en leur donnant accès à des produits de qualité auparavant inaccessibles faute de moyens de paiement adaptés.</p>
-
-            <p>Dans un monde où la technologie blockchain transforme les industries, Global Bulk vise à devenir un acteur clé de la <strong>décentralisation du secteur du commerce de gros</strong>. Nous croyons fermement que l'avenir du sourcing B2B réside dans l'élimination des intermédiaires, la transparence totale et l'accessibilité universelle, quel que soit le pays ou le niveau de revenu.</p>
         </section>
 
-        <!-- SECTION FONDATEURS (Betix Style) -->
+        <!-- SECTION FONDATEURS -->
         <section class="wp-founders">
             <h2>1.1 L'ÉQUIPE DIRIGEANTE</h2>
             
@@ -235,26 +239,24 @@
                 <!-- Profil Djami -->
                 <div class="founder-card">
                     <div class="founder-avatar-wrapper">
-                        <!-- NOM DE L'IMAGE : djami.jpg -->
                         <img src="djami.jpg" alt="Djami Yakonga" class="founder-avatar" onerror="this.src='https://via.placeholder.com/100x100?text=Photo'">
                     </div>
                     <div class="founder-info">
                         <h3>Djami Yakonga</h3>
                         <p class="role">Fondateur et Directeur du Développement</p>
-                        <p class="bio">Un entrepreneur visionnaire passionné par les nouvelles technologies et l'inclusion financière, il est le fondateur et l'initiateur du projet Global Bulk. Il a imaginé cette plateforme pour répondre à un besoin fondamental : faciliter les échanges commerciaux B2B tout en offrant un moyen de paiement accessible à tous, y compris les populations non bancarisées. Fort d'une solide expérience en gestion de projet, finance et développement commercial, il a réuni autour de cette vision ambitieuse une équipe talentueuse et complémentaire. Sa mission : faire de Global Bulk un acteur clé au service du commerce, de l'industrie et de l'éducation à l'échelle mondiale, en plaçant l'humain et l'accessibilité au cœur de chaque décision.</p>
+                        <p class="bio">Un entrepreneur visionnaire passionné par les nouvelles technologies et l'inclusion financière, il est le fondateur et l'initiateur du projet Global Bulk. Il a imaginé cette plateforme pour répondre à un besoin fondamental : faciliter les échanges commerciaux B2B tout en offrant un moyen de paiement accessible à tous, y compris les populations non bancarisées. Fort d'une solide expérience en gestion de projet, finance et développement commercial, il a réuni autour de cette vision ambitieuse une équipe talentueuse et complémentaire.</p>
                     </div>
                 </div>
 
                 <!-- Profil Freddy -->
                 <div class="founder-card">
                     <div class="founder-avatar-wrapper">
-                        <!-- NOM DE L'IMAGE : freddy.jpg -->
                         <img src="freddy.jpg" alt="Freddy Yumba" class="founder-avatar" onerror="this.src='https://via.placeholder.com/100x100?text=Photo'">
                     </div>
                     <div class="founder-info">
                         <h3>Freddy Yumba</h3>
                         <p class="role">Directeur et Chef de Projet</p>
-                        <p class="bio">Expert en gestion d'entreprise et en stratégie opérationnelle, Freddy Yumba assure la direction et la coordination globale du projet Global Bulk. Il veille à la bonne exécution de la feuille de route, à la structuration de l'équipe et à l'alignement constant entre les objectifs stratégiques et les opérations quotidiennes. Grâce à son expérience dans le pilotage de projets complexes, il garantit que la plateforme reste fidèle à sa promesse d'origine : offrir un service de qualité, sécurisé et accessible à l'ensemble de la communauté Pi Network et au-delà.</p>
+                        <p class="bio">Expert en gestion d'entreprise et en stratégie opérationnelle, Freddy Yumba assure la direction et la coordination globale du projet Global Bulk. Il veille à la bonne exécution de la feuille de route, à la structuration de l'équipe et à l'alignement constant entre les objectifs stratégiques et les opérations quotidiennes. Grâce à son expérience dans le pilotage de projets complexes, il garantit que la plateforme reste fidèle à sa promesse d'origine.</p>
                     </div>
                 </div>
 
