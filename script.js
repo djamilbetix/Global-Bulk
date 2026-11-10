@@ -1,8 +1,8 @@
 (function() {
     'use strict';
 
-    var SUPABASE_URL = 'https://rixxdxgmsbjweyptzlfj.supabase.co';
-    var SUPABASE_KEY = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InJpeHhkeGdtc2Jqd2V5cHR6bGZqIiwicm9sZSI6ImFub24iLCJpYXQiOjE3OTEyNTQ2MTIsImV4cCI6MjEwNjgzMDYxMn0.1yO_8kQ7LemA55KDuIKRX8eR7_1rrZyDtSS3U2Cv_lo';
+    var SUPABASE_URL = (window.GLOBAL_BULK_CONFIG && window.GLOBAL_BULK_CONFIG.supabase.url) || '';
+    var SUPABASE_KEY = (window.GLOBAL_BULK_CONFIG && window.GLOBAL_BULK_CONFIG.supabase.anonKey) || '';
 
     var TEXTS = {
         en: {
@@ -456,8 +456,8 @@
             if (!piUser) { reject(new Error('Not connected')); return; }
             if (typeof Pi === 'undefined' || !Pi.createPayment) { reject(new Error('Pi SDK missing')); return; }
             Pi.createPayment({ amount: amount, memo: memo, metadata: metadata }, {
-                onReadyForServerApproval: function(paymentId) { fetch('https://global-bulk-pi-backend.onrender.com/approve', { method: 'POST', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify({ paymentId: paymentId }) }).catch(function(e) { console.error(e); }); },
-                onReadyForServerCompletion: function(paymentId, txid) { fetch('https://global-bulk-pi-backend.onrender.com/complete', { method: 'POST', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify({ paymentId: paymentId, txid: txid }) }).then(function(r) { return r.json(); }).then(function() { resolve({ paymentId: paymentId, txid: txid }); }).catch(function(error) { reject(error); }); },
+                onReadyForServerApproval: function(paymentId) { fetch('(window.GLOBAL_BULK_CONFIG.payments.backendBaseUrl + '/approve')', { method: 'POST', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify({ paymentId: paymentId }) }).catch(function(e) { console.error(e); }); },
+                onReadyForServerCompletion: function(paymentId, txid) { fetch('(window.GLOBAL_BULK_CONFIG.payments.backendBaseUrl + '/complete')', { method: 'POST', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify({ paymentId: paymentId, txid: txid }) }).then(function(r) { return r.json(); }).then(function() { resolve({ paymentId: paymentId, txid: txid }); }).catch(function(error) { reject(error); }); },
                 onCancel: function() { reject(new Error(t('payment_cancelled'))); },
                 onError: function(error) { reject(error); }
             });
