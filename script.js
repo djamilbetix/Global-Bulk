@@ -333,7 +333,7 @@
             .catch(function(e) { console.error('[Supa] loadProfile error', e); userProfile = null; return null; }); 
     }
 
-    // --- SAUVEGARDE ROBUSTE DU PROFIL ---
+    // --- CORRECTION ROBUSTE DE LA SAUVEGARDE DU PROFIL ---
     function saveProfileToSupabase(data) {
         if (!piUser) return Promise.reject(new Error('Not connected'));
         
@@ -348,15 +348,24 @@
             updated_at: new Date().toISOString()
         };
 
+        // 1. On vérifie si le profil existe déjà (GET)
         return SupaAPI.get('profils?pi_uid=eq.' + encodeURIComponent(piUser.uid))
             .then(function(rows) {
                 if (rows && rows.length > 0) {
+                    // 2a. S'il existe, on le met à jour avec PATCH
                     var existingId = rows[0].id; 
                     return SupaAPI.patch('profils?id=eq.' + existingId, payload)
-                        .then(function(updatedRows) { userProfile = updatedRows[0]; return userProfile; });
+                        .then(function(updatedRows) {
+                            userProfile = updatedRows[0];
+                            return userProfile;
+                        });
                 } else {
+                    // 2b. S'il n'existe pas, on le crée avec POST
                     return SupaAPI.post('profils', payload)
-                        .then(function(newRows) { userProfile = newRows[0]; return userProfile; });
+                        .then(function(newRows) {
+                            userProfile = newRows[0];
+                            return userProfile;
+                        });
                 }
             });
     }
@@ -866,7 +875,7 @@
         item.addEventListener('click', function(e) {
             // On vérifie si c'est un lien direct (comme le Whitepaper)
             if (this.tagName.toLowerCase() === 'a') {
-                return; // On laisse le navigateur suivre le lien href
+                return; // On laisse le navigateur suivre le lien href (redirection immédiate)
             }
 
             var tab = this.getAttribute('data-tab'); 
