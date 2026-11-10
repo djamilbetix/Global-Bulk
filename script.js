@@ -883,11 +883,11 @@
             case 'historique': return renderHistorique();
             case 'parametres': return renderSettings();
             case 'langues': return renderSettings();
-            // LIVRE BLANC : Simple comme un livre
+            // LIVRE BLANC : Lien direct vers le fichier autonome
             case 'livre-blanc':
                 return '<h3><i class="fas fa-book"></i> ' + t('whitepaper_title') + '</h3>' +
                     '<p style="color:var(--text-muted);font-size:14px;margin-bottom:20px;line-height:1.6;">' + t('whitepaper_intro') + '</p>' +
-                    '<a href="whitepaper.html" class="btn btn-primary btn-block" style="padding: 16px; font-size: 16px;">' +
+                    '<a href="whitepaper.html" target="_blank" class="btn btn-primary btn-block" style="padding: 16px; font-size: 16px;">' +
                         '<i class="fas fa-book-open"></i> ' + t('whitepaper_read') +
                     '</a>';
             default: return '<p>—</p>';
